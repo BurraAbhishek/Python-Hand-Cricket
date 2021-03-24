@@ -12,6 +12,4 @@ Fixed a bug where a wrong choice of bat/field crashes the game.
 
 ## NOTE: 
 
-This update will be pushed to the super over game soon.
-
-The two documents for the readme are out of date. This readme file will be updated soon.
+The two documentation files are out of date as of 24 March 2021. This readme file will be updated soon with the new documentatioin.
