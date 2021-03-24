@@ -2,7 +2,7 @@ import random
 
 # Select the bowlers
 def fieldChoice(bowlers_array,innings,user_choice_batfield):
-    if inig==1:
+    if innings==1:
         if user_choice_batfield == 'bat':
             bowler_selected=random.choice(bowlers_array)
         elif user_choice_batfield == 'field':
