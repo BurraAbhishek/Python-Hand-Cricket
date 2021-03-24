@@ -11,4 +11,4 @@ Fixed a bug where a wrong choice of bat/field crashes the game.
 
 ## NOTE: 
 
-The two documentation files are out of date as of 24 March 2021. This readme file will be updated soon with the new documentatioin.
+The two documentation files are out of date as of 24 March 2021. This readme file will be updated soon with the new documentation in the readme and as a PDF file.
