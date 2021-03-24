@@ -13,11 +13,11 @@ def playOut(fd,bt):
     # Get the batter's attempted score
     o_run=random.randint(0, 6)
     # Punish the bowler for overflow case
-    if prun<0 or prun>6:
+    if p_run<0 or p_run>6:
         rr='6'
     else:
         # Wicket, if the numbers match
-        if prun==orun:
+        if p_run==o_run:
             rr='W'
         else:
             rr=str(orun)
