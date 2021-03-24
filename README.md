@@ -10,4 +10,4 @@ Improved readability
 
 More commentary
 
-Bug fix where a wrong choice of bat/field crashes the game.
+Fixed a bug where a wrong choice of bat/field crashes the game.
