@@ -1,9 +1,33 @@
 # Generate the scorecard
 # a1: Score Array of the team batting first
 # b1: Score Array of the team fielding first
+# la: Name of all players of the team batting first
+# lc: Name of all players of the team fielding first
 # innings: 1st innings or 2nd innings
 
-def scoreCard(al,bl,innings):
+def scoreCard(al,bl,la,lc,innings):
+    A1=la[1]
+    A2=la[2]
+    A3=la[3]
+    A4=la[4]
+    A5=la[5]
+    A6=la[6]
+    A7=la[7]
+    A8=la[8]
+    A9=la[9]
+    A10=la[10]
+    A11=la[11]
+    B1=lc[1]
+    B2=lc[2]
+    B3=lc[3]
+    B4=lc[4]
+    B5=lc[5]
+    B6=lc[6]
+    B7=lc[7]
+    B8=lc[8]
+    B9=lc[9]
+    B10=lc[10]
+    B11=lc[11]
     print("Batting")
     if innings==1:
         print(A1,"scored",al[A1][0],"runs off",al[A1][1],"balls, hitting",al[A1][2],"fours and",al[A1][3],"sixes.")
