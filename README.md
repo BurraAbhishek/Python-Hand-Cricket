@@ -1,6 +1,8 @@
 # Python-Hand-Cricket
 Play hand cricket against a bot for free on Python! More information about the gameplay is available in "Hand Cricket Python App Documentation.pdf" which you can read just by clicking on it!
 
+Playing interface: Command Line Interface
+
 ## Getting Started:
 ### Rules of the game:
 This game is like hand cricket and runs on Python. To know more about hand cricket, visit https://www.instructables.com/id/How-to-Play-Hand-Cricket/
