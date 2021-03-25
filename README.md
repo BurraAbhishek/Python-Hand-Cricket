@@ -25,6 +25,8 @@ Supported platforms:
 
 NOTE: As Windows XP uses Python 2.7 as its last version, developers can modify the code for this purpose.
 
+Either use git clone or download this entire repository to play this game.
+
 Disk space: 10 MB (minimum).
 
 ### About this project
