@@ -27,11 +27,15 @@ inig=1
 # Possible scores in a ball.
 runchoice=('0','1','2','3','4','5','6','W')
 
+# Enter the password required to play the match
+# pwod: User input password
+# pchek: Required password
 pwod=input("Enter match password: ")
 fz=open("gpascd.txt",'r')
 pchek=fz.read()
 fz.close()
 
+# Validate the password and proceed to the game
 if pwod == pchek:
     try:
         opchoice=int(input("For how many overs game? Default: T20, Your choice: "))
@@ -49,8 +53,10 @@ if pwod == pchek:
         wa=10
     print("Total:", wa, "wickets game")
 
+    # Variable za holds the decision from the toss: bat first or field first
     za=toss.tossPlay()
 
+    # Prepare the team structure if player chooses to bat first
     if za == "bat":
         f=open("team1.txt", 'r')
         sla=f.read()
@@ -62,6 +68,7 @@ if pwod == pchek:
 
         lc=['Computer', 'CPU1', 'CPU2', 'CPU3', 'CPU4', 'CPU5', 'CPU6', 'CPU7', 'CPU8', 'CPU9', 'CPU10', 'CPU11']
 
+    # Prepare the team structure if player chooses to field first
     else:
         la=['Computer', 'CPU1', 'CPU2', 'CPU3', 'CPU4', 'CPU5', 'CPU6', 'CPU7', 'CPU8', 'CPU9', 'CPU10', 'CPU11']
 
@@ -72,6 +79,8 @@ if pwod == pchek:
         T3=lc[0]
         gpldb=int(lc[12])
         gwonb=int(lc[13])
+
+    # The two teams look like this:
 
     #['P1','A1','A2','A3','A4','A5','A6','A7','A8','A9','A10','A11']
     #['P2','B1','B2','B3','B4','B5','B6','B7','B8','B9','B10','B11']
@@ -102,7 +111,8 @@ if pwod == pchek:
     B9=lc[9]
     B10=lc[10]
     B11=lc[11]
-        
+
+# First Innings - Main code
 def innFirst():
     print("First Innings")
     sa=0
@@ -201,10 +211,12 @@ def innFirst():
     scorecard.scoreCard(baindex,bindex,la,lc,inig)
     return score
 
+# Play the first innings.
 if pwod == pchek:
     sa=innFirst()
     inig+=1
 
+# Second Innings - Main code
 def innSecond():
     print("Second Innings")
     print("Target:", sa+1)
@@ -303,62 +315,72 @@ def innSecond():
     scorecard.scoreCard(baindex,bindex,la,lc,inig)
     return [score, wicket]
 
+# Compute the results. team_wins checks if the team wins against the computer or not.
 if pwod == pchek:        
     sb=innSecond()
+    # Score at the end of second innings
     sba=sb[0]
+    # Number of wickets fallen at the end of second innings
     sbb=sb[1]
+    # Team batting first successfully defends its score
     if sa>sba:
         if za == "bat":
             print("Congratulations, you won!")
-            zza=1
+            team_wins=1
         else:
             print("Sorry, you lost this game. Better luck next time.")
-            zza=0
+            team_wins=0
         print(T1, "wins by", sa-sba, "runs")
+    # Team batting second successfully chases its target
     elif sa<sba:
         if za == "bat":
             print("Sorry, you lost this game. Better luck next time.")
-            zza=0
+            team_wins=0
         else:
             print("Congratulations, you won!")
-            zza=1
+            team_wins=1
         print(T2, "wins by", 10-sbb, "wickets")
+    # Scores are level - Match tied. Proceed to super over
     else:
         print("Tied")
-        zza=0
+        team_wins=0
         print("You are eligible to play Super Over to decide the tie! Win the super over and then see the number of games won!")
-        xzzzint = random.randint(0,1000000000)
-        print("Your Super over key is ", xzzzint, " Keep it safe since you need it to play the super over.")
-        xzzzza=open("tiepascd.txt","w")
-        xzzzzl=[pchek,xzzzint,za]
-        xzzzza.write(str(xzzzzl))
-        xzzzza.close()
+        new_super_over_key = random.randint(0,1000000000)
+        print("Your Super over key is ", new_super_over_key, " Keep it safe since you need it to play the super over.")
+        new_super_over_keyholder=open("tiepascd.txt","w")
+        new_super_over_keyarray=[pchek,new_super_over_key,za]
+        new_super_over_keyholder.write(str(new_super_over_keyarray))
+        new_super_over_keyholder.close()
 
+    # Open the team file and read its contents
     gwona="team"+str(T3)+".txt"
     gplda=open(gwona, "r")
     gpldh=gplda.read()
     gplda.close()
-    dtja=ast.literal_eval(gpldh)
+    playcountarray=ast.literal_eval(gpldh)
     print()
-    gpldc=int(int(dtja[12])+1)
-    gwonb=int(dtja[13])
+    # Get number of games played and won
+    gpldc=int(int(playcountarray[12])+1)
+    gwonb=int(playcountarray[13])
 
-    if zza==0:
+    # Update the playcount and wincount based on the result
+    if team_wins==0:
         gwonc=gwonb
     else:
         gwonc=gwonb+1
-    dtja[12]=gpldc
-    dtja[13]=gwonc
+    playcountarray[12]=gpldc
+    playcountarray[13]=gwonc
     gwonf=open(gwona, "w")
-    gwonf.write(str(dtja))
+    gwonf.write(str(playcountarray))
     gwonf.close()
 
-        
+    # Display the team stats at the end of the match    
     winpercentage=(gwonc*100)/gpldc
     print("Games played: ", gpldc)
     print("Games won: ", gwonc)
     print("Win Percentage", winpercentage)
     end_game_notify=input()
 
+# Team fails to authenticate
 if pwod != pchek:
     wrong_password_notify=input("Sorry, wrong password! Make sure that you enter the correct password before proceeding")
