@@ -13,3 +13,5 @@ Possible outcomes of pull requests:
 - If all goes well, your change will be merged to this repository. 
 - If your change isn't merged, I will try my best to explain why the change isn't merged. 
 - I will try my best to review all pull requests within a week.
+
+This CONTRIBUTING.md file is constantly evolving. If you want any changes implemented in this file, feel free to create an issue or a pull request and describe the changes to be implemented.
