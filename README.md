@@ -1,6 +1,11 @@
 # Python-Hand-Cricket
 Play hand cricket as an individual or a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in "Hand Cricket Python App Documentation.pdf" in this repository, which you can read just by clicking on it!
 
+## Proposed Changes
+- Add support for test cricket
+- Encrypt all passwords. This change is required for security purposes.
+- Add support to save game data, so that teams can pick up from where they left off. This is a proposed fix for deliberate abandonment of games.
+
 ## Getting Started:
 ### Rules of the game:
 This game is like hand cricket and runs on Python. To know more about hand cricket, visit https://www.instructables.com/id/How-to-Play-Hand-Cricket/
