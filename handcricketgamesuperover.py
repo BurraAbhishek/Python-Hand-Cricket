@@ -16,9 +16,9 @@ m=[]
 lb=[]
 # Score for each ball faced in each over of the second innings
 mb=[]
-# Numerical score for each ball faced in an over, second innings
-lq=[]
 # Numerical score for each ball faced in an over, first innings
+lq=[]
+# Numerical score for each ball faced in an over, second innings
 lp=[]
 # First innings score
 sa=0
