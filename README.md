@@ -31,7 +31,7 @@ Disk space: 10 MB (minimum).
 
 ### About this project
 
-This is the legacy hand cricket game – implemented in Python and supporting text files.
+This is the legacy hand cricket game – implemented in Python and played using the command line interface.
 
 This project was built entirely on Python 3.7.4 and is compatible with all later versions as well. 
 
@@ -39,8 +39,12 @@ The game can be played even without an internet connection.
 
 Tournament mode is not yet included in this game. Customized tournaments can be created using individual team files. For such tournaments, at least 20 MB of disk space is recommended.
 
+Support for test cricket will soon be included.
+
 ### Known bugs
+
+Passwords are stored in text files. Until the issue is fixed, it is recommended to store a backup of your text files. Passwords can be changed by going into the text file and changing the password in the array to something else of your choice.
 
 A hack exists wherein a team may abruptly and deliberately close the application to avoid losing a match. This bug is not fixed since a more serious bug, in which unexpected crashes would lead to a loss irrespective of the position, would otherwise overshadow the possibility of victory. 
 
-Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application, as described above, is considered as an abandoned match.
+Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application, as described above, is considered as an abandoned match. Soon, such deliberate abandonments will count as losses.
