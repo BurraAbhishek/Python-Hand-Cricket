@@ -5,13 +5,15 @@ Play hand cricket as an individual or a team of 11 against a team of 11 bots for
 ### Rules of the game:
 This game is like hand cricket and runs on Python. To know more about hand cricket, visit https://www.instructables.com/id/How-to-Play-Hand-Cricket/
 
+To know more about the laws of cricket, visit https://en.wikipedia.org/wiki/Laws_of_Cricket (Wikipedia link)
+
 However, you will find some differences in the game. The ‘stok’ moves which otherwise adds the bowler’s input to your score adds zero in the app.
 
 Whatever you show your opponent, enter its value. For example, showing an open palm to your opponent represents 5. Input 5 and not ‘open palm’.
 
 The ultimate goal is simple: Score more than your opponent to win.
 ### Pre-requisites:
-To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 24 March 2021 is Python 3.9.2. Go to https://www.python.org/downloads to install the latest version or https://www.python.org/downloads/release/python-374 to install version 3.7.4.
+To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 24 March 2021 is Python 3.9.2. Go to https://www.python.org/downloads to install the latest version.
 
 Supported platforms:
 
