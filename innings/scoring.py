@@ -144,10 +144,10 @@ def innFirst(team_1_array, team_2_array, innings, bat_bowl_choice, batting_score
                             if bat_bowl_choice == 'bat':
                                 batterlist.append('')
                             if player1 == '':
-                                onstrike=batterChoice(batters_list = batterlist, non_striker = player2, innings = innings, user_choice_batfield = bat_bowl_choice)
+                                onstrike=batterChoice(batter_list = batterlist, non_striker = player2, innings = innings, user_choice_batfield = bat_bowl_choice)
                                 player1=onstrike
                             elif player2 == '':
-                                onstrike=batterChoice(batters_list = batterlist, non_striker = player1, innings = innings, user_choice_batfield = bat_bowl_choice)
+                                onstrike=batterChoice(batter_list = batterlist, non_striker = player1, innings = innings, user_choice_batfield = bat_bowl_choice)
                                 player2=onstrike
                         # Append the outcome to the over. Wicket counts as 'W'
                         ball_score.append(ball_outcome)
