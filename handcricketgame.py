@@ -9,8 +9,8 @@ from modules.bowling import playOut
 from modules.batterchoice import batterChoice
 from modules.bowlerchoice import fieldChoice
 
-from scoring import innFirst
-from chasing import innSecond
+from innings.scoring import innFirst
+from innings.chasing import innSecond
 
 # Score for each ball faced in the first innings
 l=[]
