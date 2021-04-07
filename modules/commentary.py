@@ -26,20 +26,20 @@ commentary_6runs = [", SIX, What a shot! That went too far away from the stadium
 commentary_5runs = [", 5 runs to the batting side. Just a single, but wait...misfield and four.",", 5 runs to the batting side. Missed run out becomes worse for the fielding side as the ball races to the boundary."]
 commentary_4runs = [", FOUR! The ball races to the boundary.",", FOUR! The fielders can't stop the ball as it races towards the boundary.",", FOUR! Slammed towards the ropes!",", FOUR! One bounce, and into the stands.",", FOUR! Misfield and four runs."]
 
-def scoreRun(r,tx,rx):
-    if r == '6':
-        print(tx, "to", rx, random.choice(commentary_6runs))
-    elif r == '5':
-        print(tx, "to", rx, random.choice(commentary_5runs))
-    elif r == '4':
-        print(tx, "to", rx, random.choice(commentary_4runs))
-    elif r == '3':
-        print(tx, "to", rx, ", 3 runs")
-    elif r == '2':
-        print(tx, "to", rx, ", 2 runs")
-    elif r == '1':
-        print(tx, "to", rx, ", 1 run")
-    elif r == '0':
-        print(tx, "to", rx, ", NO RUN")
-    elif r == 'W':
-        print(tx, "to", rx, ", OUT", outCall())
+def scoreRun(score,bowler,batter):
+    if score == '6':
+        print(bowler, "to", batter, random.choice(commentary_6runs))
+    elif score == '5':
+        print(bowler, "to", batter, random.choice(commentary_5runs))
+    elif score == '4':
+        print(bowler, "to", batter, random.choice(commentary_4runs))
+    elif score == '3':
+        print(bowler, "to", batter, ", 3 runs")
+    elif score == '2':
+        print(bowler, "to", batter, ", 2 runs")
+    elif score == '1':
+        print(bowler, "to", batter, ", 1 run")
+    elif score == '0':
+        print(bowler, "to", batter, ", NO RUN")
+    elif score == 'W':
+        print(bowler, "to", batter, ", OUT", outCall())
