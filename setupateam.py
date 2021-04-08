@@ -31,6 +31,10 @@ else:
         for i in range(1, 12):
             team_member_input_message = "Player ID "+str(i)+": "
             team_member = input(team_member_input_message)
+            # Team members must have a name; they can't be blank.
+            while(len(team_member)<1):
+                team_member_input_message = "Player ID "+str(i)+": "
+                team_member = input(team_member_input_message)
             team_data.append(team_member)
         # Number of games played: Initialized to 0
         team_data.append(0)
