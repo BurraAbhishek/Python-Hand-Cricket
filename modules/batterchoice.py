@@ -22,7 +22,7 @@ def batterChoice(batter_list,non_striker,innings,user_choice_batfield):
                 chosen_batter = chosen_batter_by_team
             else:
                 # The chosen batter is not in the list
-                chosen_batter = random.choice(batter_list)
+                chosen_batter = filterBatter(batter_list_dirty = batter_list)
 
     # The team chases the opponent score  
     else:
@@ -44,7 +44,18 @@ def batterChoice(batter_list,non_striker,innings,user_choice_batfield):
                 chosen_batter = chosen_batter_by_team
             else:
                 # The chosen batter is not in the list
-                chosen_batter = random.choice(batter_list)
+                chosen_batter = filterBatter(batter_list_dirty = batter_list)
     # Remove the chosen batter from the list of remaining batters
     batter_list.pop(batter_list.index(chosen_batter))             
     return chosen_batter
+
+def filterBatter(batter_list_dirty):
+    batter_list_clean = []
+    for i in batter_list_dirty:
+        if(len(i)>0):
+            batter_list_clean.append(i)
+    if(len(batter_list_clean)>0):
+        returned_batter = random.choice(batter_list_clean)
+    else:
+        returned_batter = ''
+    return returned_batter
