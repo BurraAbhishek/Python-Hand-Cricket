@@ -1,11 +1,6 @@
 # Python-Hand-Cricket
 Play hand cricket as an individual or a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in "Hand Cricket Python App Documentation.pdf" in this repository, which you can read just by clicking on it!
 
-## Proposed Changes
-- Add support for test cricket
-- Encrypt all passwords. This change is required for security purposes.
-- Add support to save game data, so that teams can pick up from where they left off. This is a proposed fix for deliberate abandonment of games.
-
 ## Getting Started:
 ### Rules of the game:
 This game is a hybrid of cricket and hand cricket and runs on the Python Command-line interface. To know more about hand cricket, visit https://www.instructables.com/id/How-to-Play-Hand-Cricket/
@@ -24,9 +19,11 @@ Supported platforms:
 -	Mac OS X 10.6 or later
 -	Linux 
 
-Either download this entire repository to play this game, or use git clone:
+Either download this entire repository to play this game, or clone this repository using:
 
+```
 $ git clone https://github.com/BurraAbhishek/Python-Hand-Cricket.git
+```
 
 Disk space: 10 MB (minimum).
 
@@ -49,3 +46,8 @@ Passwords are stored in text files. Until the issue is fixed, it is recommended 
 A hack exists wherein a team may abruptly and deliberately close the application to avoid losing a match. This bug is not fixed since a more serious bug, in which unexpected crashes would lead to a loss irrespective of the position, would otherwise overshadow the possibility of victory. 
 
 Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application, as described above, is considered as an abandoned match. Soon, such deliberate abandonments will count as losses.
+
+## Proposed Changes
+- Add support for test cricket
+- Encrypt all passwords. This change is required for security purposes.
+- Add support to save game data, so that teams can pick up from where they left off. This is a proposed fix for deliberate abandonment of games.
