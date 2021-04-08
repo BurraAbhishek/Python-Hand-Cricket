@@ -19,8 +19,9 @@ from modules.bowlerchoice import fieldChoice
 # runchoice : List of all the scoring choices available to the opponent.
 # max_overs : Maximum number of overs available in the innings.
 # max_wickets : Maximum number of wickets in the innings.
+# is_test : Boolean: Is the game a test match (is_test = true) or a limited-over match? (is_test = false)
 
-def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscore,batting_score,innings_data,runchoice,max_overs,max_wickets):
+def innSecond(team_1_array, team_2_array, innings, bat_bowl_choice, opponent_netscore, batting_score, innings_data, runchoice, max_overs, max_wickets, is_test):
     # Regenerate team details
     T1=team_1_array[0]
     T2=team_2_array[0]
@@ -69,6 +70,8 @@ def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscor
     bowlers_history=['']
     score=0
     wicket=0
+    # Number of balls remaining
+    balls_remaining = max_overs * 6
     # First player is on strike
     onstrike=player1
     gamebIsPlaying=True
@@ -76,13 +79,13 @@ def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscor
         # i^th over
         for i in range (1, max_overs+1):
             # End the innings if all overs are bowled            
-            if i==max_overs:
+            if balls_remaining == 0 and not is_test:
                 gamebIsPlaying=False
             # End the innings if the batting side is all out
-            if wicket==max_wickets:
+            elif wicket == max_wickets:
                 gamebIsPlaying=False
             # End the innings if the target is successfully chased
-            if score>opponent_netscore:
+            elif score>opponent_netscore:
                 gamebIsPlaying=False
             # Innings in progress
             else:
@@ -99,8 +102,8 @@ def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscor
                         bowlerlist.append(bowlers_history[i-1])
                 # Each over has 6 balls
                 for j in range (1, 7):
-                    # End the innings as soon as the batting side is all out
-                    if wicket==max_wickets or score>opponent_netscore:
+                    # End the innings as soon as the target is chased or the batting side is all out
+                    if wicket == max_wickets or score > opponent_netscore:
                         gamebIsPlaying=False
                     # Over in progress
                     else:
@@ -110,6 +113,8 @@ def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscor
                             ball_outcome=playOut(bowler = bowler, batter = onstrike)
                         else:
                             ball_outcome=playIn(bowler = bowler, batter = onstrike)
+                        # The ball is bowled
+                        balls_remaining -= 1
                         # Outcome of the ball: 0, 1, 2, 3, 4, 5, 6
                         if ball_outcome != 'W':
                             run=int(ball_outcome)
@@ -123,6 +128,13 @@ def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscor
                             bowler_stats[bowler][3]+=1
                         # Add the outcome to the score
                         score=score+run
+                        # The bowler bowled a ball. Add to bowler statistics
+                        if j == 6:
+                            # The bowler bowled an over
+                            bowler_stats[bowler][0] = int((((bowler_stats[bowler][0])*10)+5)/10)
+                        else:
+                            # The bowler did not complete the over.
+                            bowler_stats[bowler][0] = (((bowler_stats[bowler][0])*10)+1)/10
                         # The bowler concedes runs
                         bowler_stats[bowler][2]+=run
                         # The batter scored the runs
@@ -138,7 +150,7 @@ def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscor
                         # Display the outcome and the commentary.    
                         scoreRun(score = ball_outcome, bowler = bowler, batter = onstrike)
                         # When a wicket falls,
-                        if ball_outcome == 'W':
+                        if ball_outcome == 'W' and wicket < max_wickets:
                             # The dismissed batter walks back
                             if onstrike == player1:
                                 player1=''
@@ -166,8 +178,6 @@ def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscor
                                 else:
                                     onstrike=player1  
                 bowlers_history.append(bowler)
-                # Bowler completed an over. Add to bowler statistics
-                bowler_stats[bowler][0]+=1
                 # Maiden over bowled
                 if ball_score_integervalue==[0,0,0,0,0,0]:
                     bowler_stats[bowler][1]+=1
@@ -179,7 +189,10 @@ def innSecond(team_1_array,team_2_array,innings,bat_bowl_choice,opponent_netscor
                 print("Bowling:")
                 print(bowler,":",bowler_stats[bowler][0],"-",bowler_stats[bowler][1],"-",bowler_stats[bowler][2],"-",bowler_stats[bowler][3])
                 print("Score: ", score, "/", wicket)
-                print("Need", opponent_netscore+1-score, "runs to win off", max_overs-i, "overs")
+                if(is_test):
+                    print("Need", opponent_netscore+1-score, "runs to win")
+                else:
+                    print("Need", opponent_netscore+1-score, "runs to win off", balls_remaining, "balls")
                 # Interchange the batters
                 if onstrike==player1:
                     onstrike=player2
