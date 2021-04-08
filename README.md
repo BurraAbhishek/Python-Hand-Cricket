@@ -48,6 +48,6 @@ A hack exists wherein a team may abruptly and deliberately close the application
 Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application, as described above, is considered as an abandoned match. Soon, such deliberate abandonments will count as losses.
 
 ## Proposed Changes
-- Add support for test cricket
+- Add test cricket module
 - Encrypt all passwords. This change is required for security purposes.
 - Add support to save game data, so that teams can pick up from where they left off. This is a proposed fix for deliberate abandonment of games.
