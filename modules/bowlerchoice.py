@@ -10,9 +10,9 @@ def fieldChoice(bowlers_array,innings,user_choice_batfield):
             print("Bowlers:",bowlers_array)
             bowlchoice=input("Choose your bowler: ")
             bowler_team_valid=0
-            for i in range(0,11):
-                if bowlchoice==bowlers_array[i]:
-                    bowler_team_valid+=1
+            for i in bowlers_array:
+                if bowlchoice==i:
+                    bowler_team_valid += 1
                     bowler_shortlisted=bowlchoice
             if bowler_team_valid!=0:
                 bowler_selected=bowler_shortlisted
@@ -26,9 +26,9 @@ def fieldChoice(bowlers_array,innings,user_choice_batfield):
             print("Bowlers:",bowlers_array)
             bowlchoice=input("Choose your bowler: ")
             bowler_team_valid=0
-            for i in range(0,11):
-                if bowlchoice==bowlers_array[i]:
-                    bowler_team_valid+=1
+            for i in bowlers_array:
+                if bowlchoice==i:
+                    bowler_team_valid += 1
                     bowler_shortlisted=bowlchoice
             if bowler_team_valid!=0:
                 bowler_selected=bowler_shortlisted
