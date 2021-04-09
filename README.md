@@ -1,5 +1,39 @@
 # Python-Hand-Cricket
-Play hand cricket as an individual or a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in "Hand Cricket Python App Documentation.pdf" in this repository, which you can read just by clicking on it!
+Play hand cricket as an individual or a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in the [documentation](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/Hand%20Cricket%20Python%20App%20Documentation.pdf).
+
+## About this game
+
+This is the legacy hand cricket game – implemented in Python and played using the command line interface.
+
+This game was built entirely on Python 3.7.4. It is compatible with all releases of Python 3.5 and later.
+
+The game can be played even without an internet connection.
+
+Tournament mode is not yet included in this game. Customized tournaments can be created using individual team files. For such tournaments, at least 20 MB of disk space is recommended.
+
+Full support for test cricket will soon be included.
+
+This game supports almost all of the laws of cricket which can be implemented in a computer program.
+
+NOTE: To play only the traditional hand cricket game, set a large number of overs (or infinite overs) and 1 wicket as the game settings.
+
+### Modules:
+- [Team setup](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/setupateam.py): Setup your team and it's members. Team members need not be unique, since only one person may actually be an entire team, i.e., the person wants to play as an individual. In that case, the person's name can be the name of each team member.
+- [Match registration](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/registerformatch.py): Register a match between your team and a computer-controlled opposition team. This module prepares an interface to recognize your team as the computer team's opposition for the upcoming match. Of course, you can play the match whenever you want. Set up your team first before using this module.
+- [Limited-overs game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgame.py): The limited-overs cricket module. 
+- [Super over](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgamesuperover.py): The super over tiebreaker. This module is accessible only if a limited-overs match is tied.
+- [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgametestcricket.py): The test cricket module. Still under development.
+#### Submodules:
+- [innings/scoring.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/innings/scoring.py): The innings in which teams try to score big. In limited-overs cricket, this is always the first innings. In test cricket, this is the non-chasing innings.
+- [innings/chasing.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/innings/chasing.py): The innings in which teams chase the opposition's total.
+- [modules/batterchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/batterchoice.py): From a given list of players, select the player who will bat now.
+- [modules/batting.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/batting.py): Module which contains the code for batting. The required module in this code is called playIn(), because the player's input contributes to the team's total.
+- [modules/bowlerchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/bowlerchoice.py): From a given list of players, select the bowler.
+- [modules/bowling.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/bowling.py): Module which contains the code for bowling. The required module in this code is called playOut(), because the player's input contributes to dismissing the opposition (The batter should be out).
+- [modules/commentary.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/commentary.py): Generate the commentary for each ball bowled, based on the result of that ball.
+- [modules/scorecard.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/scorecard.py): Generate the innings scorecard at the end of each innings.
+- [modules/toss.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/toss.py): Toss to decide which team bats / fields first. This code is not compatible with super over games, since this decision is the reverse of their decision in the latest tied game
+- [modules/followon.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/followon.py): Only works for test cricket. Determine whether the team which batted first can enforce the follow-on or not. This code runs only if the team batting first leads by a certain threshold.
 
 ## Getting Started:
 ### Rules of the game:
@@ -7,7 +41,7 @@ This game is a hybrid of cricket and hand cricket and runs on the Python Command
 
 To know more about the laws of cricket, visit https://en.wikipedia.org/wiki/Laws_of_Cricket (Wikipedia link)
 
-#### NOTE: The runs and wickets are determined by the rules of Hand Cricket. The rest of the game follows the Laws of Cricket
+#### NOTE: The scoring and dismissal mechanisms are determined by the rules of Hand Cricket. The rest of the game follows the Laws of Cricket
 
 The ultimate goal is simple: Score more than your opponent to win.
 ### Pre-requisites:
@@ -27,18 +61,6 @@ $ git clone https://github.com/BurraAbhishek/Python-Hand-Cricket.git
 
 Disk space: 10 MB (minimum).
 
-### About this project
-
-This is the legacy hand cricket game – implemented in Python and played using the command line interface.
-
-This project was built entirely on Python 3.7.4 and is compatible with all later versions as well. 
-
-The game can be played even without an internet connection.
-
-Tournament mode is not yet included in this game. Customized tournaments can be created using individual team files. For such tournaments, at least 20 MB of disk space is recommended.
-
-Support for test cricket will soon be included.
-
 ### Known bugs
 
 Passwords are stored in text files. Until the issue is fixed, it is recommended to store a backup of your text files. Passwords can be changed by going into the text file and changing the password in the array to something else of your choice.
@@ -48,6 +70,6 @@ A hack exists wherein a team may abruptly and deliberately close the application
 Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application, as described above, is considered as an abandoned match. Soon, such deliberate abandonments will count as losses.
 
 ## Proposed Changes
-- Add test cricket module
+- Complete the test cricket module
 - Encrypt all passwords. This change is required for security purposes.
 - Add support to save game data, so that teams can pick up from where they left off. This is a proposed fix for deliberate abandonment of games.
