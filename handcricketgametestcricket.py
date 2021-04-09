@@ -145,14 +145,14 @@ if input_password == match_password:
         team1_score2=scoringInnings(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = toss_chosen, batting_score = team1_score2, innings_data = team1_innings2_data, start_message = "Team 1 - Second Innings", max_overs = math.inf, max_wickets = wickets_choice, is_test = True)
         innings = 2
 
-# TODO:
-# 1. Assign the correct team the target to be chased using the chasingInnings module
-# 2. Add innings victory support
-# 3. Decide the other win conditions.
-# 4. In case of a tie, declare match drawn. It will not count as a win and no super over will be provided.
-
 '''
-Replace the above lines with the new code.
+# @TODO 1. Assign the correct team the target to be chased using the chasingInnings module
+# @TODO 2. Add innings victory support
+# @TODO 3. Decide the other win conditions.
+# @TODO 4. In case of a tie, declare match drawn. It will not count as a win and no super over will be provided.
+
+
+Replace the lines within the triple quotes with the new code.
 # Play the second innings and compute the results. team_wins checks if the team wins against the computer or not.
 if input_password == match_password:        
     score2 = chasingInnings(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = toss_chosen, opponent_netscore = score1, batting_score = score2, innings_data = innings2_data, runchoice = runchoice, max_overs = -1, max_wickets = wickets_choice, is_test = False)
