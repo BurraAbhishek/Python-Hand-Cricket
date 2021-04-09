@@ -15,12 +15,12 @@ from modules.bowlerchoice import fieldChoice
 # bat_bowl_choice : Result of the toss ( bat / field )
 # batting_score : The team score, usually initialized to zero.
 # innings_data : Ball-by-ball score
-# runchoice : List of all the scoring choices available to the opponent.
+# start_message : Message displayed before innings start.
 # max_overs : Maximum number of overs available in the innings.
 # max_wickets : Maximum number of wickets in the innings.
 # is_test : Boolean: Is the game a test match (is_test = true) or a limited-over match? (is_test = false)
 
-def innFirst(team_1_array, team_2_array, innings, bat_bowl_choice, batting_score, innings_data, runchoice, max_overs, max_wickets, is_test):
+def scoringInnings(team_1_array, team_2_array, innings, bat_bowl_choice, batting_score, innings_data, start_message, max_overs, max_wickets, is_test):
     # Regenerate team details
     T1=team_1_array[0]
     T2=team_2_array[0]
@@ -48,7 +48,7 @@ def innFirst(team_1_array, team_2_array, innings, bat_bowl_choice, batting_score
     B9=team_2_array[9]
     B10=team_2_array[10]
     B11=team_2_array[11]
-    print("First Innings")
+    print(start_message)
     # Initialize team score = 0
     batting_score=0
     # Score for each ball faced in each over of the first innings
@@ -94,7 +94,7 @@ def innFirst(team_1_array, team_2_array, innings, bat_bowl_choice, batting_score
                 if bowler_stats[bowler][0]>=(max_overs/5) or bowler == bowlers_history[i-1]:
                     bowlerlist.pop(bowlerlist.index(bowler))
                     bowler=random.choice(bowlerlist)
-                    if bowler_stats[bowler][0]<(max_overs/5):
+                    if bowler_stats[bowler][0]<(max_overs/5) or is_test:
                         bowlerlist.append(bowlers_history[i-1])
                 # Each over has 6 balls
                 for j in range (1, 7):
