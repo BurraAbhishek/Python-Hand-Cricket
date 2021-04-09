@@ -15,23 +15,23 @@ from innings.scoring import scoringInnings
 from innings.chasing import chasingInnings
 
 # Score for each ball faced in the first innings of the first team
-team1_innings1_data=[]
+team1_innings1_data = []
 # Score for each ball faced in the first innings of the second team
-team2_innings1_data=[]
+team2_innings1_data = []
 # Score for each ball faced in the second innings of the first team
-team1_innings2_data=[]
+team1_innings2_data = []
 # Score for each ball faced in the second innings of the second team
-team2_innings2_data=[]
+team2_innings2_data = []
 # First innings score, first team
-team1_score1=0
+team1_score1 = 0
 # Second innings score, first team
-team1_score2=0
+team1_score2 = 0
 # First innings score, second team
-team2_score1=0
+team2_score1 = 0
 # Second innings score, second team
-team2_score2=0
+team2_score2 = 0
 # Innings: Assign the role of each team: bat / field. Doesn't represent 1st or 2nd innings.
-innings=1
+innings = 1
 # Is follow-on enforced? Decided after both teams complete their first innings.
 isfollowon = False
 
@@ -132,27 +132,70 @@ if input_password == match_password:
 if input_password == match_password:
     if team1_score1 - team2_score1 >= followon_choice:
         isfollowon = checkFollowOn(team1_name = T1, team2_name = T2, p_name = T3)
-
-# Assign the innings accordingly.
-if input_password == match_password:
-    if isfollowon:
-        print("Follow-on enforced by",T1)
-        team2_score2=scoringInnings(team_1_array = team2_list, team_2_array = team1_list, innings = innings, bat_bowl_choice = toss_reversed, batting_score = team2_score2, innings_data = team2_innings2_data, start_message = "Team 2 - Second Innings", max_overs = math.inf, max_wickets = wickets_choice, is_test = True)
-        innings = 1
+        if isfollowon:
+            print("Follow-on enforced by",T1)
+            team2_score2=scoringInnings(team_1_array = team2_list, team_2_array = team1_list, innings = innings, bat_bowl_choice = toss_reversed, batting_score = team2_score2, innings_data = team2_innings2_data, start_message = "Team 2 - Second Innings", max_overs = math.inf, max_wickets = wickets_choice, is_test = True)
+            innings = 1
+        else:
+            print(T1,"did not enforce follow on. Hence,",T1,"will continue batting.")
+            innings = 1
+            team1_score2=scoringInnings(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = toss_chosen, batting_score = team1_score2, innings_data = team1_innings2_data, start_message = "Team 1 - Second Innings", max_overs = math.inf, max_wickets = wickets_choice, is_test = True)
+            innings = 2
     else:
-        print(T1,"did not enforce follow on. Hence,",T1,"will continue batting.")
         innings = 1
         team1_score2=scoringInnings(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = toss_chosen, batting_score = team1_score2, innings_data = team1_innings2_data, start_message = "Team 1 - Second Innings", max_overs = math.inf, max_wickets = wickets_choice, is_test = True)
         innings = 2
+        
+
+# If the user forfeits the match beyond this stage, it counts as a loss.
+if input_password == match_password:
+    # Update the number of games played.
+    player_teamname = "team"+str(T3)+".txt"
+    player_team_file = open(player_teamname, "r")
+    player_team_gamestats = player_team_file.read()
+    player_team_file.close()
+    playcountarray = ast.literal_eval(player_team_gamestats)
+    # Get number of games played and won
+    games_played_new = int(int(playcountarray[12])+1)
+    playcountarray[12] = games_played_new
+    player_team_file = open(player_teamname, "w")
+    player_team_file.write(str(playcountarray))
+    player_team_file.close()
+
+# Assign the innings accordingly.
+if input_password == match_password:
+    # Check for innings victory
+    innings_victory = False
+    if team2_score1 + team2_score2 < team1_score1 and isfollowon:
+        innings_victory = True
+        if toss_chosen == "bat":
+            print("Congratulations, you won!")
+            team_wins=1
+        else:
+            print("Sorry, you lost this game. Better luck next time.")
+            team_wins=0
+        print(T1, "wins by an innings and", (team1_score1 - (team2_score1 + team2_score2)), "runs")
+    elif team1_score1 + team1_score2 < team2_score1 and not isfollowon:
+        innings_victory = True
+        if toss_chosen == "bat":
+            print("Sorry, you lost this game. Better luck next time.")
+            team_wins=0
+        else:
+            print("Congratulations, you won!")
+            team_wins=1
+        print(T2, "wins by an innings and", (team2_score1 - (team1_score1 + team1_score2)), "runs")
+    # Play the second innings of the other team if the result is not an innings victory
+    if not innings_victory:
+        if isfollowon:
+            team1_score2 = chasingInnings(team_1_array = team2_list, team_2_array = team1_list, innings = innings, bat_bowl_choice = toss_reversed, opponent_netscore = (team2_score1 + team2_score2 - team1_score1), batting_score = team1_score2, innings_data = team1_innings2_data, start_message = "Team 1 - Second Innings", max_overs = math.inf, max_wickets = wickets_choice, is_test = True)
+        else:
+            team2_score2 = chasingInnings(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = toss_chosen, opponent_netscore = (team1_score1 + team1_score2 - team2_score1), batting_score = team2_score2, innings_data = team2_innings2_data, start_message = "Team 2 - Second Innings", max_overs = math.inf, max_wickets = wickets_choice, is_test = True)
+
+# @TODO 1. Decide the win and loss conditions other than innings victory or innings defeat.
+# @TODO 2. In case of a tie, declare match drawn. It will not count as a win and no super over will be provided.
 
 '''
-# @TODO 1. Assign the correct team the target to be chased using the chasingInnings module
-# @TODO 2. Add innings victory support
-# @TODO 3. Decide the other win conditions.
-# @TODO 4. In case of a tie, declare match drawn. It will not count as a win and no super over will be provided.
-
-
-Replace the lines within the triple quotes with the new code.
+Replace the following lines within the triple quotes with the new code.
 # Play the second innings and compute the results. team_wins checks if the team wins against the computer or not.
 if input_password == match_password:        
     score2 = chasingInnings(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = toss_chosen, opponent_netscore = score1, batting_score = score2, innings_data = innings2_data, runchoice = runchoice, max_overs = -1, max_wickets = wickets_choice, is_test = False)
