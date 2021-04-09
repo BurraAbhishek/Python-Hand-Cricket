@@ -70,23 +70,25 @@ def chasingInnings(team_1_array, team_2_array, innings, bat_bowl_choice, opponen
     bowlers_history=['']
     score=0
     wicket=0
+    # Over increment variable: i
+    i = 1
     # Number of balls remaining
     balls_remaining = max_overs * 6
     # First player is on strike
     onstrike=player1
-    gamebIsPlaying=True
-    while gamebIsPlaying:
+    gameIsPlaying=True
+    while gameIsPlaying:
         # i^th over
-        for i in range (1, max_overs+1):
+        # for i in range (1, max_overs+1):
             # End the innings if all overs are bowled            
             if balls_remaining == 0 and not is_test:
-                gamebIsPlaying=False
+                gameIsPlaying=False
             # End the innings if the batting side is all out
             elif wicket == max_wickets:
-                gamebIsPlaying=False
+                gameIsPlaying=False
             # End the innings if the target is successfully chased
             elif score>opponent_netscore:
-                gamebIsPlaying=False
+                gameIsPlaying=False
             # Innings in progress
             else:
                 over=i
@@ -104,7 +106,7 @@ def chasingInnings(team_1_array, team_2_array, innings, bat_bowl_choice, opponen
                 for j in range (1, 7):
                     # End the innings as soon as the target is chased or the batting side is all out
                     if wicket == max_wickets or score > opponent_netscore:
-                        gamebIsPlaying=False
+                        gameIsPlaying=False
                     # Over in progress
                     else:
                         print("Ball", j)
@@ -200,6 +202,8 @@ def chasingInnings(team_1_array, team_2_array, innings, bat_bowl_choice, opponen
                     onstrike=player1
                 ball_score_integervalue.clear()
                 ball_score.clear()
+                # Prepare the next over
+                i += 1
                 # Ready for the next over
                 alert_ready_nextover=input()
     # Generate the scorecard at the end of the innings.
