@@ -8,8 +8,8 @@ from modules.bowling import playOut
 from modules.batterchoice import batterChoice
 from modules.bowlerchoice import fieldChoice
 
-from innings.scoring import innFirst
-from innings.chasing import innSecond
+from innings.scoring import scoringInnings
+from innings.chasing import chasingInnings
 
 # Score for each ball faced in the first innings
 innings1_data=[]
@@ -21,8 +21,6 @@ score1=0
 score2=0
 # Innings: 1st innings or 2nd innings
 innings=1
-# Possible scores in a ball.
-runchoice=('0','1','2','3','4','5','6','W')
 
 # Authenticate the team
 old_match_passcode = input("Enter tied match password: ")
@@ -112,12 +110,12 @@ if password_received == password_sent:
 
 # Play the first innings.
 if password_received == password_sent:
-    score1=innFirst(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = new_toss, batting_score = score1, innings_data = innings1_data, runchoice = runchoice, max_overs = overs_choice, max_wickets = wickets_choice, is_test = False)
-    innings+=1
+    score1 = scoringInnings(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = new_toss, batting_score = score1, innings_data = innings1_data, start_message = "First Innings", max_overs = overs_choice, max_wickets = wickets_choice, is_test = False)
+    innings += 1
 
 # Compute the results. team_wins checks if the team wins against the computer or not.
 if password_received == password_sent:        
-    score2 = innSecond(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = new_toss, opponent_netscore = score1, batting_score = score2, innings_data = innings2_data, runchoice = runchoice, max_overs = overs_choice, max_wickets = wickets_choice, is_test = False)    
+    score2 = chasingInnings(team_1_array = team1_list, team_2_array = team2_list, innings = innings, bat_bowl_choice = new_toss, opponent_netscore = score1, batting_score = score2, innings_data = innings2_data, start_message = "Second Innings", max_overs = overs_choice, max_wickets = wickets_choice, is_test = False)    
     # Score at the end of second innings
     score2_runs=score2[0]
     # Number of wickets fallen at the end of second innings
