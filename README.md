@@ -1,5 +1,5 @@
 # Python-Hand-Cricket
-Play hand cricket as an individual or a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in the [documentation](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/Hand%20Cricket%20Python%20App%20Documentation.pdf).
+Play hand cricket as an individual or as a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in the [documentation](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/Hand%20Cricket%20Python%20App%20Documentation.pdf).
 
 ## About this game
 
@@ -45,7 +45,7 @@ To know more about the laws of cricket, visit https://en.wikipedia.org/wiki/Laws
 
 The ultimate goal is simple: Score more than your opponent to win.
 ### Pre-requisites:
-To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 24 March 2021 is Python 3.9.2. Go to https://www.python.org/downloads to install the latest version.
+To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 4 April 2021 is Python 3.9.4. Go to https://www.python.org/downloads to install the latest version.
 
 Supported platforms:
 -	Microsoft Windows 7 or later
