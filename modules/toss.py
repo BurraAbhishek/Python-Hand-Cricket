@@ -7,14 +7,14 @@ def tossPlay():
     print("Time for the toss!")
     # NOTE: We will not enforce the 0 to 6 constraint. Generally, people play in that range.
     try:
-        numInput = int(input("Choose a number between 0 and 6: "))
+        numInput = int(input("Choose a number between 0 and 6 (both inclusive): "))
     except:
         numInput=0
     # Now decide whether the sum is Odd or Even. If something else is input, the player loses the toss.
-    turn = input("Odd or Even? zero is counted as even and the sum of your input and AI input is checked. ")
+    turn = input("Odd or Even? zero is counted as even, and the sum of your input and AI input is checked. ")
 
-    # Sum of the numbers
-    c=(numInput + (random.randint(0, 1)))
+    # Sum of the two input numbers = c
+    c = (numInput + (random.randint(0, 1)))
 
     # The sum is actually even
     if c%2 == 0:
@@ -34,24 +34,24 @@ def tossPlay():
             toss=0
 
     # Player wins the toss
-    if toss==1:
-        z=input("Choose to bat first or field first: ")
+    if toss == 1:
+        choice = input("Choose to bat first or field first: ")
         # Ensure that bowling first redirects to fielding first
-        if z=="bowl":
-            z = "field"
+        if choice=="bowl":
+            choice = "field"
         # Suppose the player types something else, randomly generate a decision.
-        if z!="bat" and z!="field":
-            z = play_start_with_possibilities[random.randint(0, 1)]
-        print("You won the toss and chose to", z,"first");
+        if choice!="bat" and choice!="field":
+            choice = play_start_with_possibilities[random.randint(0, 1)]
+        print("You won the toss and chose to", choice,"first");
 
     # Player loses the toss
     else:
-        oinput=random.randint(0, 1)
-        if oinput==0:
-            z="bat"
+        opponent_input = random.randint(0, 1)
+        if opponent_input==0:
+            choice="bat"
             print("Your opponent won the toss and chose to field first")
         else:
-            z="field"
+            choice="field"
             print("Your opponent won the toss and chose to bat first")
     # Return the choice
-    return z
+    return choice
