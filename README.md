@@ -22,7 +22,7 @@ NOTE: To play only the traditional hand cricket game, set a large number of over
 - [Match registration](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/registerformatch.py): Register a match between your team and a computer-controlled opposition team. This module prepares an interface to recognize your team as the computer team's opposition for the upcoming match. Of course, you can play the match whenever you want. Set up your team first before using this module.
 - [Limited-overs game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgame.py): The limited-overs cricket module. 
 - [Super over](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgamesuperover.py): The super over tiebreaker. This module is accessible only if a limited-overs match is tied.
-- [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgametestcricket.py): The test cricket module. Still under development.
+- [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgametestcricket.py): The test cricket module. 
 #### Submodules:
 - [innings/scoring.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/innings/scoring.py): The innings in which teams try to score big. In limited-overs cricket, this is always the first innings. In test cricket, this is the non-chasing innings.
 - [innings/chasing.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/innings/chasing.py): The innings in which teams chase the opposition's total.
@@ -61,15 +61,17 @@ $ git clone https://github.com/BurraAbhishek/Python-Hand-Cricket.git
 
 Disk space: 10 MB (minimum).
 
+## Features of cricket which are not implemented in this game
+- Run out: The batter fails to reach the crease before the wickets fall.
+- Extras: Wides, no balls, free hits, dead balls. 
+- This game implements a 6-run penalty for wrong bowling input. In actual cricket, various infractions by the fielding side can lead to 5 penalty runs.
+- Rain delay and DLS par score
+- Innings forfeiture in test cricket.
+
 ### Known bugs
 
 Passwords are stored in text files. Until the issue is fixed, it is recommended to store a backup of your text files. Passwords can be changed by going into the text file and changing the password in the array to something else of your choice.
 
-A hack exists wherein a team may abruptly and deliberately close the application to avoid losing a match. This bug is not fixed since a more serious bug, in which unexpected crashes would lead to a loss irrespective of the position, would otherwise overshadow the possibility of victory. 
+A hack exists wherein a team may abruptly and deliberately close the application to avoid losing a match. This bug will be fixed soon. 
 
 Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application, as described above, is considered as an abandoned match. Soon, such deliberate abandonments will count as losses.
-
-## Proposed Changes
-- Complete the test cricket module
-- Encrypt all passwords. This change is required for security purposes.
-- Add support to save game data, so that teams can pick up from where they left off. This is a proposed fix for deliberate abandonment of games.
