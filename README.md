@@ -1,6 +1,10 @@
 # Python-Hand-Cricket
 Play hand cricket as an individual or as a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in the [documentation](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/Hand%20Cricket%20Python%20App%20Documentation.pdf).
 
+## NOTE:
+
+All the links will soon be updated. To avoid breaking any links, it is recommended to use the v2.0 branch until all the links have moved.
+
 ## About this game
 
 This is the legacy hand cricket game – implemented in Python and played using the command line interface.
