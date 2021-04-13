@@ -138,6 +138,8 @@ def scoringInnings(team_1_array,
     wicket = 0
     # Over increment variable: i
     i = 1
+    # Declaring variable
+    isInningsDeclared = False
     # First player is on strike
     onstrike = player1
     gameIsPlaying = True
@@ -149,6 +151,9 @@ def scoringInnings(team_1_array,
                 gameIsPlaying = False
             # End the innings if the batting side is all out
             elif wicket == max_wickets:
+                gameIsPlaying = False
+            # End the innings in test match if innings closed
+            elif isInningsDeclared:
                 gameIsPlaying = False
             # Innings in progress
             else:
@@ -169,6 +174,9 @@ def scoringInnings(team_1_array,
                     # End the innings once the batting side is all out
                     if wicket == max_wickets:
                         gameIsPlaying = False
+                    # End the innings in test match if innings closed
+                    elif isInningsDeclared:
+                        gameIsPlaying = False
                     # Over in progress
                     else:
                         print("Ball", j)
@@ -184,9 +192,10 @@ def scoringInnings(team_1_array,
                         # To declare test innings: Ball outcome: -1.
                         # Declaring innings works only in test cricket.
                         if ball_outcome == -1:
-                            gameIsPlaying = False
+                            run = 0
+                            isInningsDeclared = True
                         # Batter scores runs
-                        if ball_outcome != 'W':
+                        elif ball_outcome != 'W':
                             run = int(ball_outcome)
                         # Batter is out
                         else:
