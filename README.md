@@ -40,9 +40,9 @@ The source code is located in the [src](https://github.com/BurraAbhishek/Python-
 
 ## Getting Started:
 ### Rules of the game:
-This game is a hybrid of cricket and hand cricket and runs on the Python Command-line interface. To know more about hand cricket, visit https://www.instructables.com/id/How-to-Play-Hand-Cricket/
-
-To know more about the laws of cricket, visit https://en.wikipedia.org/wiki/Laws_of_Cricket (Wikipedia link)
+This game is a hybrid of cricket and hand cricket and runs on the Python Command-line interface. 
+- To know more about hand cricket, visit https://www.instructables.com/id/How-to-Play-Hand-Cricket/
+- To know more about the laws of cricket, visit https://en.wikipedia.org/wiki/Laws_of_Cricket
 
 #### NOTE: The scoring and dismissal mechanisms are determined by the rules of Hand Cricket. The rest of the game follows the Laws of Cricket
 
@@ -62,18 +62,17 @@ Either download this entire repository to play this game, or clone this reposito
 $ git clone https://github.com/BurraAbhishek/Python-Hand-Cricket.git
 ```
 
-Disk space: 10 MB (minimum).
+Disk space: 32 MB (minimum), 256 MB or more (recommended).
 
 ## Features of cricket which are not implemented in this game
-- Run out: The batter fails to reach the crease before the wickets fall.
-- Extras: Wides, no balls, free hits, dead balls. 
+- [Run out](https://en.wikipedia.org/wiki/Run_out): The batter fails to reach the crease before the wickets fall.
+- [Extras](https://en.wikipedia.org/wiki/Extra_%28cricket%29): Wides, no balls, byes, leg-byes. 
 - This game implements a 6-run penalty for wrong bowling input. In actual cricket, various infractions by the fielding side can lead to 5 penalty runs.
-- Rain delay and DLS par score
-- Innings forfeiture in test cricket.
+- Rain delay and [DLS](https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis%E2%80%93Stern_method) par score
 
 ### Known bugs
 
-Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application in order to avoid losing a match is considered as an abandoned match. This issue can't be fixed, since there are other ways to get around it.
+Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application in order to avoid losing a match is considered as an abandoned match. This issue can't be fixed, since there are other ways to get around it, for example, by manually editing the JSON team files.
 
 # License
 
