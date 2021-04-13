@@ -6,6 +6,25 @@ import random
 
 
 def tossPlay():
+    """ Toss for cricket matches, using the odd-or-even concept
+
+    Arguments:
+    None
+
+    Returns:
+    A string, either "bat" or "field"
+
+    Description:
+    The player must select an integer.
+    Then, the bot will select either 0 or 1.
+    The player must decide if the sum of these integers is odd or even.
+    If the prediction is correct, the player wins the toss.
+    Then, the player can choose batting or fielding (bowling)
+    If the player loses the toss, or chooses something else,
+        then the bot will choose whether to bat or field first.
+
+    """
+
     play_start_with_possibilities = ["bat", "field"]
     print("Time for the toss!")
     # NOTE: We will not enforce the 0 to 6 constraint.
