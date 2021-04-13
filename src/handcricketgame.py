@@ -231,16 +231,18 @@ else:
     new_super_over_keyholder.close()
 
 # Update the playcount and wincount based on the result
+player_teamfile = "teams/team" + str(T3) + ".json"
+with open(player_teamfile, 'r') as match_file:
+    team_data_object = json.load(match_file)
+    games_played_old = team_data_object["games_played"]
+    games_won_old = team_data_object["games_won"]
 games_played_new = games_played_old + 1
 if team_wins == 0:
     games_won_new = games_won_old
 else:
     games_won_new = games_won_old + 1
-player_teamfile = "teams/team" + str(T3) + ".json"
-with open(player_teamfile, 'r') as match_file:
-    team_data_object = json.load(match_file)
-    team_data_object["games_played"] = games_played_new
-    team_data_object["games_won"] = games_won_new
+team_data_object["games_played"] = games_played_new
+team_data_object["games_won"] = games_won_new
 match_file.close()
 match_file_write = open(player_teamfile, "w")
 json.dump(team_data_object, match_file_write, indent=4)
