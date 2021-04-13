@@ -24,12 +24,12 @@ NOTE: To play only the traditional hand cricket game, set a large number of over
 ### Modules:
 - [Team setup](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/setupateam.py): Setup your team and it's members. Team members need not be unique, since only one person may actually be an entire team, i.e., the person wants to play as an individual. In that case, the person's name can be the name of each team member.
 - [Match registration](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/registerformatch.py): Register a match between your team and a computer-controlled opposition team. This module prepares an interface to recognize your team as the computer team's opposition for the upcoming match. Of course, you can play the match whenever you want. Set up your team first before using this module.
-- [Limited-overs game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgame.py): The limited-overs cricket module. 
+- [Limited-overs game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgame.py): The limited-overs cricket module. 
 - [Super over](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgamesuperover.py): The super over tiebreaker. This module is accessible only if a limited-overs match is tied.
 - [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgametestcricket.py): The test cricket module. 
 #### Submodules:
-- [innings/scoring.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/innings/scoring.py): The innings in which teams try to score big. In limited-overs cricket, this is always the first innings. In test cricket, this is the non-chasing innings.
-- [innings/chasing.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/innings/chasing.py): The innings in which teams chase the opposition's total.
+- [src/innings/scoring.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/scoring.py): The innings in which teams try to score big. In limited-overs cricket, this is always the first innings. In test cricket, this is the non-chasing innings.
+- [src/innings/chasing.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/chasing.py): The innings in which teams chase the opposition's total.
 - [modules/batterchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/batterchoice.py): From a given list of players, select the player who will bat now.
 - [modules/batting.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/batting.py): Module which contains the code for batting. The required module in this code is called playIn(), because the player's input contributes to the team's total.
 - [modules/bowlerchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/modules/bowlerchoice.py): From a given list of players, select the bowler.
@@ -79,3 +79,7 @@ Passwords are stored in text files. Until the issue is fixed, it is recommended 
 A hack exists wherein a team may abruptly and deliberately close the application to avoid losing a match. This bug will be fixed soon. 
 
 Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application, as described above, is considered as an abandoned match. Soon, such deliberate abandonments will count as losses.
+
+# License
+
+The source code is licensed under the terms of the [MIT License](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/LICENSE), unless specified otherwise.
