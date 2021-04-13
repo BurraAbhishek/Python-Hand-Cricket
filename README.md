@@ -1,12 +1,6 @@
 # Python-Hand-Cricket
 Play hand cricket as an individual or as a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in the [documentation](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/docs/Hand%20Cricket%20Python%20App%20Documentation.pdf).
 
-## NOTE:
-
-All the links will soon be updated. To avoid breaking any links, it is recommended to use the v2.0 branch until all the links have moved.
-
-UPDATE: Limited overs test cricket is available, except that the super over module is still under maintenance.
-
 ## About this game
 
 This is a hybrid of cricket and the legacy hand cricket game – implemented in Python and played using the command line interface.
@@ -17,18 +11,19 @@ The game can be played even without an internet connection.
 
 Tournament mode is not yet included in this game. Customized tournaments can be created using individual team files. For such tournaments, at least 20 MB of disk space is recommended.
 
-Test cricket is fully supported. Currently, it is under maintenance. You can still play test cricket from the v2.0 branch, where it is fully supported.
+Test cricket is fully supported.
 
 This game supports almost all of the laws of cricket which can be implemented in a computer program.
 
 NOTE: To play only the traditional hand cricket game, play a limited overs game, and set a large number of overs (For example, 1000 overs) and 1 wicket as the game settings when prompted.
 
 ### Modules:
+The source code is located in the [src](https://github.com/BurraAbhishek/Python-Hand-Cricket/tree/main/src) directory. The source code comprises of the following modules:
 - [Team setup](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/setupateam.py): Setup your team and it's members. Team members need not be unique, since only one person may actually be an entire team, i.e., the person wants to play as an individual. In that case, the person's name can be the name of each team member.
 - [Match registration](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/registerformatch.py): Register a match between your team and a computer-controlled opposition team. This module prepares an interface to recognize your team as the computer team's opposition for the upcoming match. Of course, you can play the match whenever you want. Set up your team first before using this module.
 - [Limited-overs game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgame.py): The limited-overs cricket module. 
-- [Super over](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgamesuperover.py): The super over tiebreaker. This module is accessible only if a limited-overs match is tied.
-- [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/handcricketgametestcricket.py): The test cricket module. 
+- [Super over](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgamesuperover.py): The super over tiebreaker. This module is accessible only if a limited-overs match is tied.
+- [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgametestcricket.py): The test cricket module. 
 #### Submodules:
 - [src/innings/scoring.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/scoring.py): The innings in which teams try to score big. In limited-overs cricket, this is always the first innings. In test cricket, this is the non-chasing innings.
 - [src/innings/chasing.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/chasing.py): The innings in which teams chase the opposition's total.
@@ -78,11 +73,7 @@ Disk space: 10 MB (minimum).
 
 ### Known bugs
 
-Passwords are stored in text files. Until the issue is fixed, it is recommended to store a backup of your text files. Passwords can be changed by going into the text file and changing the password in the array to something else of your choice.
-
-A hack exists wherein a team may abruptly and deliberately close the application to avoid losing a match. This bug will be fixed soon. 
-
-Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application, as described above, is considered as an abandoned match. Soon, such deliberate abandonments will count as losses.
+Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application in order to avoid losing a match is considered as an abandoned match. This issue can't be fixed, since there are other ways to get around it.
 
 # License
 
