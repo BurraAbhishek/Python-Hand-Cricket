@@ -14,7 +14,7 @@ Have you identified any reproducible issue? Want a feature request? Here's how y
 
 Before you create a new issue, please search in [open issues](https://github.com/BurraAbhishek/Python-Hand-Cricket/issues) to see if the issues or feature request is already filed.
 
-## Contributing:
+## Contributing code and/or ideas:
 
 To contribute code and/or ideas, fork this repository and send a pull request.
 
