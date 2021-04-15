@@ -15,6 +15,7 @@ Test cricket is fully supported.
 
 This game supports almost all of the laws of cricket which can be implemented in a computer program.
 
+### Pure hand cricket settings
 NOTE: To play only the traditional hand cricket game, play a limited overs game, and set a large number of overs (For example, 1000 overs) and 1 wicket as the game settings when prompted.
 
 ### Modules:
@@ -37,6 +38,8 @@ The source code is located in the [src](https://github.com/BurraAbhishek/Python-
 - [src/modules/toss.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/toss.py): Toss to decide which team bats / fields first. This code is not compatible with super over games, since this decision is the reverse of their decision in the latest tied game
 - [src/modules/followon.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/followon.py): Only works for test cricket. Determine whether the team which batted first can enforce the follow-on or not. This code runs only if the team batting first leads by a certain threshold.
 - [src/modules/savegamedata.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/savegamedata.py): Saves the completed game into a JSON file.
+
+Some folders (directories) have a note.md file. Please read them carefully as they describe the contents of that directory
 
 ## Getting Started:
 ### Rules of the game:
@@ -74,6 +77,10 @@ Disk space: 32 MB (minimum), 256 MB or more (recommended).
 
 Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application in order to avoid losing a match is considered as an abandoned match. This issue can't be fixed, since there are other ways to get around it, for example, by manually editing the JSON team files.
 
+In online implementations, this issue can be mitigated by using cheat detect mechanisms. While developing one, it is not recommended to explain or add comments to the code, since this makes it easier for cheaters to avoid detection.
+
 # License
 
 The source code is licensed under the terms of the [MIT License](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/LICENSE), unless specified otherwise.
+
+The sample games are licensed under the Creative Commons CC0 license.
