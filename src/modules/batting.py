@@ -24,7 +24,7 @@ Bowler:", bowler, ". Batter on strike:", batter)
         returned_runs = '0'
     else:
         # Wicket, if the numbers match
-        if p_run==o_run:
+        if p_run == o_run:
             returned_runs = 'W'
         else:
             returned_runs = str(p_run)
