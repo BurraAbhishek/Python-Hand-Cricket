@@ -5,7 +5,7 @@ import json
 
 
 def generateFilename(size):
-    game_data_savename = ''.join([random.choice( string.ascii_uppercase 
+    game_data_savename = ''.join([random.choice(string.ascii_uppercase
         + string.ascii_lowercase + string.digits) for n in range(12)])
     return game_data_savename
 
@@ -31,4 +31,3 @@ def saveGame(data):
     savefile = open(filename, 'w')
     json.dump(data, savefile, indent=4)
     savefile.close()
-
