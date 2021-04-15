@@ -3,7 +3,7 @@ import random
 # Player is bowling
 
 
-def playOut(bowler ,batter):
+def playOut(bowler, batter):
     print("This is hand cricket batting. \
 Bowler:", bowler, ". Batter on strike:", batter)
     print("Any other input means free sixer for opponent.")
