@@ -1,0 +1,777 @@
+{
+    "isTest": false,
+    "overs": 5,
+    "wickets": 10,
+    "innings_data": {
+        "innings1_data": {
+            "battingteam": "HandCricketPlayers",
+            "bowlingteam": "Computer",
+            "innings": 1,
+            "score": 174,
+            "wickets_lost": 1,
+            "data": [
+                {
+                    "bowler": "CPU8",
+                    "batter": "1",
+                    "nonstriker": "2",
+                    "over": 1,
+                    "ball": 1,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU8",
+                    "batter": "1",
+                    "nonstriker": "2",
+                    "over": 1,
+                    "ball": 2,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU8",
+                    "batter": "1",
+                    "nonstriker": "2",
+                    "over": 1,
+                    "ball": 3,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU8",
+                    "batter": "1",
+                    "nonstriker": "2",
+                    "over": 1,
+                    "ball": 4,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU8",
+                    "batter": "1",
+                    "nonstriker": "2",
+                    "over": 1,
+                    "ball": 5,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU8",
+                    "batter": "1",
+                    "nonstriker": "2",
+                    "over": 1,
+                    "ball": 6,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU10",
+                    "batter": "2",
+                    "nonstriker": "1",
+                    "over": 2,
+                    "ball": 1,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU10",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 2,
+                    "ball": 2,
+                    "result": "W"
+                },
+                {
+                    "bowler": "CPU10",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 2,
+                    "ball": 3,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU10",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 2,
+                    "ball": 4,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU10",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 2,
+                    "ball": 5,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU10",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 2,
+                    "ball": 6,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU9",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 3,
+                    "ball": 1,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU9",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 3,
+                    "ball": 2,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU9",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 3,
+                    "ball": 3,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU9",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 3,
+                    "ball": 4,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU9",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 3,
+                    "ball": 5,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU9",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 3,
+                    "ball": 6,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU1",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 4,
+                    "ball": 1,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU1",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 4,
+                    "ball": 2,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU1",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 4,
+                    "ball": 3,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU1",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 4,
+                    "ball": 4,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU1",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 4,
+                    "ball": 5,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU1",
+                    "batter": "3",
+                    "nonstriker": "1",
+                    "over": 4,
+                    "ball": 6,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU4",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 5,
+                    "ball": 1,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU4",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 5,
+                    "ball": 2,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU4",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 5,
+                    "ball": 3,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU4",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 5,
+                    "ball": 4,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU4",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 5,
+                    "ball": 5,
+                    "result": "6"
+                },
+                {
+                    "bowler": "CPU4",
+                    "batter": "1",
+                    "nonstriker": "3",
+                    "over": 5,
+                    "ball": 6,
+                    "result": "6"
+                }
+            ],
+            "batter_stats": {
+                "1": [
+                    108,
+                    18,
+                    0,
+                    18
+                ],
+                "2": [
+                    6,
+                    2,
+                    0,
+                    1
+                ],
+                "3": [
+                    60,
+                    10,
+                    0,
+                    10
+                ],
+                "4": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "5": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "6": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "7": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "8": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "9": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "10": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "11": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "bowler_stats": {
+                "CPU1": [
+                    1,
+                    0,
+                    36,
+                    0
+                ],
+                "CPU2": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU3": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU4": [
+                    1,
+                    0,
+                    36,
+                    0
+                ],
+                "CPU5": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU6": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU7": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU8": [
+                    1,
+                    0,
+                    36,
+                    0
+                ],
+                "CPU9": [
+                    1,
+                    0,
+                    36,
+                    0
+                ],
+                "CPU10": [
+                    1,
+                    0,
+                    30,
+                    1
+                ],
+                "CPU11": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        },
+        "innings2_data": {
+            "battingteam": "Computer",
+            "bowlingteam": "HandCricketPlayers",
+            "innings": 2,
+            "score": 71,
+            "wickets_lost": 3,
+            "data": [
+                {
+                    "bowler": "1",
+                    "batter": "CPU11",
+                    "nonstriker": "CPU5",
+                    "over": 1,
+                    "ball": 1,
+                    "result": "W"
+                },
+                {
+                    "bowler": "1",
+                    "batter": "CPU11",
+                    "nonstriker": "CPU5",
+                    "over": 1,
+                    "ball": 2,
+                    "result": "3"
+                },
+                {
+                    "bowler": "1",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU11",
+                    "over": 1,
+                    "ball": 3,
+                    "result": "W"
+                },
+                {
+                    "bowler": "1",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU11",
+                    "over": 1,
+                    "ball": 4,
+                    "result": "3"
+                },
+                {
+                    "bowler": "1",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 1,
+                    "ball": 5,
+                    "result": "W"
+                },
+                {
+                    "bowler": "1",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 1,
+                    "ball": 6,
+                    "result": "5"
+                },
+                {
+                    "bowler": "2",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 2,
+                    "ball": 1,
+                    "result": "0"
+                },
+                {
+                    "bowler": "2",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 2,
+                    "ball": 2,
+                    "result": "4"
+                },
+                {
+                    "bowler": "2",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 2,
+                    "ball": 3,
+                    "result": "1"
+                },
+                {
+                    "bowler": "2",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 2,
+                    "ball": 4,
+                    "result": "2"
+                },
+                {
+                    "bowler": "2",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 2,
+                    "ball": 5,
+                    "result": "5"
+                },
+                {
+                    "bowler": "2",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 2,
+                    "ball": 6,
+                    "result": "2"
+                },
+                {
+                    "bowler": "3",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 3,
+                    "ball": 1,
+                    "result": "4"
+                },
+                {
+                    "bowler": "3",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 3,
+                    "ball": 2,
+                    "result": "5"
+                },
+                {
+                    "bowler": "3",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 3,
+                    "ball": 3,
+                    "result": "4"
+                },
+                {
+                    "bowler": "3",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 3,
+                    "ball": 4,
+                    "result": "3"
+                },
+                {
+                    "bowler": "3",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 3,
+                    "ball": 5,
+                    "result": "1"
+                },
+                {
+                    "bowler": "3",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 3,
+                    "ball": 6,
+                    "result": "2"
+                },
+                {
+                    "bowler": "4",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 4,
+                    "ball": 1,
+                    "result": "1"
+                },
+                {
+                    "bowler": "4",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 4,
+                    "ball": 2,
+                    "result": "5"
+                },
+                {
+                    "bowler": "4",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 4,
+                    "ball": 3,
+                    "result": "0"
+                },
+                {
+                    "bowler": "4",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 4,
+                    "ball": 4,
+                    "result": "5"
+                },
+                {
+                    "bowler": "4",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 4,
+                    "ball": 5,
+                    "result": "0"
+                },
+                {
+                    "bowler": "4",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 4,
+                    "ball": 6,
+                    "result": "0"
+                },
+                {
+                    "bowler": "5",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 5,
+                    "ball": 1,
+                    "result": "4"
+                },
+                {
+                    "bowler": "5",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 5,
+                    "ball": 2,
+                    "result": "3"
+                },
+                {
+                    "bowler": "5",
+                    "batter": "CPU2",
+                    "nonstriker": "CPU7",
+                    "over": 5,
+                    "ball": 3,
+                    "result": "3"
+                },
+                {
+                    "bowler": "5",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 5,
+                    "ball": 4,
+                    "result": "2"
+                },
+                {
+                    "bowler": "5",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 5,
+                    "ball": 5,
+                    "result": "2"
+                },
+                {
+                    "bowler": "5",
+                    "batter": "CPU7",
+                    "nonstriker": "CPU2",
+                    "over": 5,
+                    "ball": 6,
+                    "result": "2"
+                }
+            ],
+            "batter_stats": {
+                "CPU1": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU2": [
+                    29,
+                    12,
+                    2,
+                    0
+                ],
+                "CPU3": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU4": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU5": [
+                    0,
+                    1,
+                    0,
+                    0
+                ],
+                "CPU6": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU7": [
+                    39,
+                    14,
+                    2,
+                    0
+                ],
+                "CPU8": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU9": [
+                    0,
+                    1,
+                    0,
+                    0
+                ],
+                "CPU10": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "CPU11": [
+                    3,
+                    2,
+                    0,
+                    0
+                ]
+            },
+            "bowler_stats": {
+                "1": [
+                    1,
+                    0,
+                    11,
+                    3
+                ],
+                "2": [
+                    1,
+                    0,
+                    14,
+                    0
+                ],
+                "3": [
+                    1,
+                    0,
+                    19,
+                    0
+                ],
+                "4": [
+                    1,
+                    0,
+                    11,
+                    0
+                ],
+                "5": [
+                    1,
+                    0,
+                    16,
+                    0
+                ],
+                "6": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "7": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "8": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "9": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "10": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "11": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        }
+    }
+}
