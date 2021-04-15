@@ -309,7 +309,7 @@ def chasingInnings(team_1_array,
                 print(batter2_stats_string)
                 print("Bowling:")
                 bowler_stats_string = (str(bowler)
-                                       + ":"
+                                       + ": "
                                        + str(bowler_stats[bowler][0])
                                        + " - "
                                        + str(bowler_stats[bowler][1])
