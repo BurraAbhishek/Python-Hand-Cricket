@@ -3,7 +3,7 @@ from modules import hashfunc
 
 
 def team_setup():
-    """ Creates a new text file containing all the team details
+    """ Creates a new JSON file containing all the team details
 
     Usage:
     team_setup()
