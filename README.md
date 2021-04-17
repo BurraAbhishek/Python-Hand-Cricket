@@ -83,4 +83,4 @@ In online implementations, this issue can be mitigated by using cheat detect mec
 
 The source code is licensed under the terms of the [MIT License](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/LICENSE), unless specified otherwise.
 
-The sample games are licensed under the Creative Commons CC0 license.
+The sample games and documentation are licensed under the Creative Commons CC0 license.
