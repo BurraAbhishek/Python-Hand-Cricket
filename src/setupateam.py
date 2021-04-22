@@ -12,6 +12,7 @@ def team_setup():
 
     Returns:
     A JSON file containing all the team details, saved in the 'teams' directory
+    This JSON file is compatible with the multiplayer version.
 
     Working:
     During runtime, the following inputs are required:
@@ -21,10 +22,10 @@ def team_setup():
     """
 
     print("Welcome to Python based hand cricket")
-    print("NOTE: Team names '1', 'Computer' and 'CPU' are system reserved. \
+    print("NOTE: Team names 'Computer' and 'CPU' are system reserved. \
 Hence, they are not allowed.")
     teamname = input("Team name: ")
-    reserved_names = ["1", "CPU", "Computer", ""]
+    reserved_names = ["CPU", "Computer", ""]
     if teamname in reserved_names:
         perror_sysreserved = input("System reserved, \
 can't give you chosen team. Hit 'Enter', and then try again.")
@@ -48,10 +49,6 @@ hence can't give you same team. Hit 'Enter', and then try again.")
                     team_member_input_message = "Player ID " + str(i) + ": "
                     team_member = input(team_member_input_message)
                 team_member_names.append(team_member)
-            # Number of games played: Initialized to 0
-            games_played = 0
-            # Number of games won: Initialized to 0
-            games_won = 0
             # Ask the user for the team passcode
             team_pass_uinput = input("Enter your team password: ")
             team_pass = hashfunc.hash_password(team_pass_uinput)
@@ -59,9 +56,15 @@ hence can't give you same team. Hit 'Enter', and then try again.")
             team_data_json = {
                 "team_name": teamname,
                 "team_members": team_member_names,
-                "games_played": games_played,
-                "games_won": games_won,
-                "team_key": team_pass
+                "games_played": 0,
+                "games_won": 0,
+                "games_lost": 0,
+                "tests_tied": 0,
+                "team_key": team_pass,
+                "online": True,
+                "hasSuperOver": False,
+                "tosViolation": False,
+                "isHuman": True
                 }
             print("Team registration in progress...")
             team_file = open(file_name, 'w')
