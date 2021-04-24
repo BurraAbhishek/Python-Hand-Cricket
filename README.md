@@ -25,15 +25,15 @@ The source code is located in the [src](https://github.com/BurraAbhishek/Python-
 - [Team setup](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/setupateam.py): Setup your team and it's members. Team members need not be unique, since only one person may actually be an entire team, i.e., the person wants to play as an individual. In that case, the person's name can be the name of each team member.
 - [Match registration](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/registerformatch.py): Register a match between your team and a computer-controlled opposition team. This module prepares an interface to recognize your team as the computer team's opposition for the upcoming match. Of course, you can play the match whenever you want. Set up your team first before using this module.
 - [Limited-overs game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgame.py): The limited-overs cricket module. 
-- [Super over](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgamesuperover.py): The super over tiebreaker. This module is accessible only if a limited-overs match is tied.
+- [Super over](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgamesuperover.py): The super over tiebreaker. This module is now located in the modules directory, and this file is no longer maintained.
 - [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgametestcricket.py): The test cricket module. 
 #### Submodules:
 - [src/innings/scoring.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/scoring.py): The innings in which teams try to score big. In limited-overs cricket, this is always the first innings. In test cricket, this is the non-chasing innings.
 - [src/innings/chasing.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/chasing.py): The innings in which teams chase the opposition's total.
 - [src/modules/batterchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/batterchoice.py): From a given list of players, select the player who will bat now.
-- [src/modules/batting.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/batting.py): Module which contains the code for batting. The required module in this code is called playIn(), because the player's input contributes to the team's total.
+- [src/modules/batting.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/batting.py): Module which contains the code for batting.
 - [src/modules/bowlerchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/bowlerchoice.py): From a given list of players, select the bowler.
-- [src/modules/bowling.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/bowling.py): Module which contains the code for bowling. The required module in this code is called playOut(), because the player's input contributes to dismissing the opposition (The batter should be out).
+- [src/modules/bowling.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/bowling.py): Module which contains the code for bowling.
 - [src/modules/commentary.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/commentary.py): Generate the commentary for each ball bowled, based on the result of that ball.
 - [src/modules/scorecard.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/scorecard.py): Generate the innings scorecard at the end of each innings.
 - [src/modules/hashfunc.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/hashfunc.py): Contains the hashing and verification algorithms used, by importing the required modules. Therefore, if a stronger algorithm is found, it is easier to simply update the algorithm from this file than to update the algorithms everywhere.
@@ -41,7 +41,7 @@ The source code is located in the [src](https://github.com/BurraAbhishek/Python-
 - [src/modules/followon.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/followon.py): Only works for test cricket. Determine whether the team which batted first can enforce the follow-on or not. This code runs only if the team batting first leads by a certain threshold.
 - [src/modules/savegamedata.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/savegamedata.py): Saves the completed game into a JSON file.
 
-Some folders (directories) have a note.md file. Please read them carefully as they describe the contents of that directory
+Some folders (directories) have a README.md file. Please read them carefully as they describe the contents of that directory
 
 ## Getting Started:
 ### Rules of the game:
