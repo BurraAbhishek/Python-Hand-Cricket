@@ -2,8 +2,7 @@ import random
 
 from modules import scorecard
 from modules.commentary import scoreRun
-from modules.batting import playIn
-from modules.bowling import playOut
+from modules.scoreinput import playBall
 from modules.batterchoice import batterChoice
 from modules.bowlerchoice import fieldChoice
 
@@ -98,11 +97,13 @@ def scoringInnings(team_1_array,
     player1 = batterChoice(batter_list=batterlist,
                            non_striker=0,
                            innings=innings,
-                           user_choice_batfield=bat_bowl_choice)
+                           user_choice_batfield=bat_bowl_choice,
+                           is_batter_human=team_1_array[14])
     player2 = batterChoice(batter_list=batterlist,
                            non_striker=player1,
                            innings=innings,
-                           user_choice_batfield=bat_bowl_choice)
+                           user_choice_batfield=bat_bowl_choice,
+                           is_batter_human=team_1_array[14])
     # Batter statistics
     batter_stats = {
         A1: [0, 0, 0, 0],
@@ -160,7 +161,10 @@ def scoringInnings(team_1_array,
                 over = i
                 print("Over", i)
                 # The fielding side selects the bowler
-                bowler = fieldChoice(bowlerlist, innings, bat_bowl_choice)
+                bowler = fieldChoice(bowlerlist,
+                                     innings,
+                                     bat_bowl_choice,
+                                     is_bowler_human=team_2_array[14])
                 # A bowler can't bowl for more than 20% of total overs
                 # No bowler is allowed consecutive overs
                 if (bowler_stats[bowler][0] >= (max_overs / 5)
@@ -181,13 +185,11 @@ def scoringInnings(team_1_array,
                     else:
                         print("Ball", j)
                         # Bat or bowl
-                        if bat_bowl_choice == "bat":
-                            ball_outcome = playIn(bowler=bowler,
-                                                  batter=onstrike,
-                                                  is_declare_permitted=is_test)
-                        else:
-                            ball_outcome = playOut(bowler=bowler,
-                                                   batter=onstrike)
+                        ball_outcome = playBall(bowler=bowler,
+                                                batter=onstrike,
+                                                is_declare_permitted=is_test,
+                                                bowler_human=team_2_array[14],
+                                                batter_human=team_1_array[14])
                         # Outcome of the ball: 0, 1, 2, 3, 4, 5, 6, W.
                         # To declare test innings: Ball outcome: -1.
                         # Declaring innings works only in test cricket.
@@ -246,17 +248,21 @@ def scoringInnings(team_1_array,
                                 batterlist.append('')
                             if player1 == '':
                                 c = bat_bowl_choice
+                                c1 = team_1_array[14]
                                 onstrike = batterChoice(batter_list=batterlist,
                                                         non_striker=player2,
                                                         innings=innings,
-                                                        user_choice_batfield=c)
+                                                        user_choice_batfield=c,
+                                                        is_batter_human=c1)
                                 player1 = onstrike
                             elif player2 == '':
                                 c = bat_bowl_choice
+                                c1 = team_1_array[14]
                                 onstrike = batterChoice(batter_list=batterlist,
                                                         non_striker=player1,
                                                         innings=innings,
-                                                        user_choice_batfield=c)
+                                                        user_choice_batfield=c,
+                                                        is_batter_human=c1)
                                 player2 = onstrike
                         # Append the outcome to the over.
                         # Wicket counts as 'W'.
