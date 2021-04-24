@@ -1,6 +1,8 @@
 # Python-Hand-Cricket
 Play hand cricket as an individual or as a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in the [documentation](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/docs/Hand%20Cricket%20Python%20App%20Documentation.pdf).
 
+NOTE: Multiplayer support is planned even in this repository, for which, to register a match, the code has changed. When prompted, choose to play against the computer. Then, everything will work as usual
+
 ## About this game
 
 This is a hybrid of cricket and the legacy hand cricket game – implemented in Python and played using the command line interface.
@@ -77,7 +79,7 @@ Disk space: 32 MB (minimum), 256 MB or more (recommended).
 
 Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application in order to avoid losing a match is considered as an abandoned match. This issue can't be fixed, since there are other ways to get around it, for example, by manually editing the JSON team files.
 
-In online implementations, this issue can be mitigated by using cheat detect mechanisms. While developing one, it is not recommended to explain or add comments to the code, since this makes it easier for cheaters to avoid detection.
+Since this is a local implementation, moderation won't apply here. So, you can cheat as much as you want. An online implementation of this game is being implemented in [another repository](https://github.com/BurraAbhishek/HandCricket-Multiplayer). It is still under development and open to contributions.
 
 # License
 
