@@ -1,12 +1,11 @@
 import random
 
 # This module is used only in test cricket, NOT in limited overs cricket
-# For human vs human or computer vs computer, p_name = '' (Empty string)
 
 
-def checkFollowOn(team1_name, team2_name, p_name):
+def checkFollowOn(team1_name, team2_name, is_team1_human):
     is_human = True
-    if(team2_name == p_name):
+    if not is_team1_human:
         # The computer batted first.
         is_human = False
     if is_human:
