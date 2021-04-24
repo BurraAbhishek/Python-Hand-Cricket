@@ -41,7 +41,14 @@ def team_setup_convert():
             "team_members": team_member_names,
             "games_played": games_played,
             "games_won": games_won,
-            "team_key": team_pass
+            "games_lost": games_played - games_won,
+            "tests_tied": 0,
+            "team_key": team_pass,
+            "online": True,
+            "hasSuperOver": False,
+            "tosViolation": False,
+            "isAccountClosed": False,
+            "isHuman": True
             }
         print("Team registration in progress...")
         team_file = open(output_name, 'w')
