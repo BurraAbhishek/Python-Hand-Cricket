@@ -6,12 +6,6 @@ import sys
 
 from modules import hashfunc
 from modules import toss
-from modules import scorecard
-from modules.commentary import scoreRun
-from modules.batting import playIn
-from modules.bowling import playOut
-from modules.batterchoice import batterChoice
-from modules.bowlerchoice import fieldChoice
 from modules.followon import checkFollowOn
 from modules.savegamedata import saveGame
 
@@ -79,21 +73,27 @@ isfollowon = False
 
 # Enter the password required to play the match
 # input_password: User input password
-# match_password: Required password
-with open("team1.json", 'r') as match_file:
-    team_data = json.load(match_file)
-match_password = team_data["password"]
-match_file.close()
-print("Playing team:", team_data["team_name"])
+# match_password: Required password (Either team1 or team2 can type)
+with open("team1.json", 'r') as match_file1:
+    team_data1 = json.load(match_file1)
+match_file1.close()
+with open("team2.json", 'r') as match_file2:
+    team_data2 = json.load(match_file2)
+match_file2.close()
+match_password1 = team_data1["password"]
+match_password2 = team_data2["password"]
+print("Playing game:", team_data1["team_name"], "Vs.", team_data2["team_name"])
 input_password = input("Enter match password: ")
 
 # Exit if the password is wrong.
-if not hashfunc.verify_password(input_password, match_password):
+if (not hashfunc.verify_password(input_password, match_password1)
+        and not hashfunc.verify_password(input_password, match_password2)):
     print("Sorry, wrong password! ")
     print("Ensure that you type the match password, not your team password.")
     print("Ensure that you enter the correct password before proceeding.")
     wrong_password_notify = input()
     sys.exit(0)
+
 
 # Validate the password and proceed to the game
 try:
@@ -127,54 +127,37 @@ if toss_chosen == "bat":
 else:
     toss_reversed = "bat"
 
-# Prepare the team structure if player chooses to bat first
+# Prepare the team structure if team1 chooses to bat first
 if toss_chosen == "bat":
-    team1_list = [team_data["team_name"]]
+    team1_list = [team_data1["team_name"]]
     for i in range(0, 11):
-        team1_list.append(team_data["team_members"][i])
-    team1_list.append(team_data["games_played"])
-    team1_list.append(team_data["games_won"])
-    T3 = team1_list[0]
-    games_played_old = int(team1_list[12])
-    games_won_old = int(team1_list[13])
-    team2_list = [
-        'Computer',
-        'CPU1',
-        'CPU2',
-        'CPU3',
-        'CPU4',
-        'CPU5',
-        'CPU6',
-        'CPU7',
-        'CPU8',
-        'CPU9',
-        'CPU10',
-        'CPU11'
-        ]
-# Prepare the team structure if player chooses to field first
+        team1_list.append(team_data1["team_members"][i])
+    team1_list.append(team_data1["games_played"])
+    team1_list.append(team_data1["games_won"])
+    team1_list.append(team_data1["isHuman"])
+
+    team2_list = [team_data2["team_name"]]
+    for i in range(0, 11):
+        team2_list.append(team_data2["team_members"][i])
+    team2_list.append(team_data2["games_played"])
+    team2_list.append(team_data2["games_won"])
+    team2_list.append(team_data2["isHuman"])
+
+# Prepare the team structure if team1 chooses to field first
 else:
-    team1_list = [
-        'Computer',
-        'CPU1',
-        'CPU2',
-        'CPU3',
-        'CPU4',
-        'CPU5',
-        'CPU6',
-        'CPU7',
-        'CPU8',
-        'CPU9',
-        'CPU10',
-        'CPU11'
-        ]
-    team2_list = [team_data["team_name"]]
+    team1_list = [team_data2["team_name"]]
     for i in range(0, 11):
-        team2_list.append(team_data["team_members"][i])
-    team2_list.append(team_data["games_played"])
-    team2_list.append(team_data["games_won"])
-    T3 = team2_list[0]
-    games_played_old = int(team2_list[12])
-    games_won_old = int(team2_list[13])
+        team1_list.append(team_data2["team_members"][i])
+    team1_list.append(team_data2["games_played"])
+    team1_list.append(team_data2["games_won"])
+    team1_list.append(team_data2["isHuman"])
+
+    team2_list = [team_data1["team_name"]]
+    for i in range(0, 11):
+        team2_list.append(team_data1["team_members"][i])
+    team2_list.append(team_data1["games_played"])
+    team2_list.append(team_data1["games_won"])
+    team2_list.append(team_data1["isHuman"])
 
 # The two teams look like this:
 
@@ -232,7 +215,9 @@ team2_score1 = scoringInnings(team_1_array=team2_list,
 
 # Check if follow-on is required or not, and then proceed accordingly.
 if team1_score1 - team2_score1 >= followon_choice:
-    isfollowon = checkFollowOn(team1_name=T1, team2_name=T2, p_name=T3)
+    isfollowon = checkFollowOn(team1_name=T1,
+                               team2_name=T2,
+                               is_team1_human=team1_list[14])
     if isfollowon:
         print("Follow-on enforced by", T1)
         team2_score2 = scoringInnings(team_1_array=team2_list,
@@ -280,11 +265,13 @@ innings_victory = False
 if team2_score1 + team2_score2 < team1_score1 and isfollowon:
     innings_victory = True
     if toss_chosen == "bat":
-        print("Congratulations, you won!")
+        if not team2_list[14]:
+            print("Congratulations, you won!")
         team_wins = 1
     else:
-        print("Sorry, you lost this game. Better luck next time.")
-        team_wins = 0
+        if not team2_list[14]:
+            print("Sorry, you lost this game. Better luck next time.")
+        team_wins = -1
     innings_win_message = (str(T1)
                            + " wins by an innings and "
                            + str(team1_score1 - (team2_score1 + team2_score2))
@@ -293,11 +280,13 @@ if team2_score1 + team2_score2 < team1_score1 and isfollowon:
 elif team1_score1 + team1_score2 < team2_score1 and not isfollowon:
     innings_victory = True
     if toss_chosen == "bat":
-        print("Sorry, you lost this game. Better luck next time.")
-        team_wins = 0
-    else:
-        print("Congratulations, you won!")
+        if not team2_list[14]:
+            print("Sorry, you lost this game. Better luck next time.")
         team_wins = 1
+    else:
+        if not team2_list[14]:
+            print("Congratulations, you won!")
+        team_wins = -1
     innings_win_message = (str(T2)
                            + " wins by an innings and "
                            + str(team2_score1 - (team1_score1 + team1_score2))
@@ -357,11 +346,13 @@ if not innings_victory:
     # Team batting first successfully defends its score
     if team1_totalscore > team2_totalscore:
         if toss_chosen == "bat":
-            print("Congratulations, you won!")
+            if not team2_list[14]:
+                print("Congratulations, you won!")
             team_wins = 1
         else:
-            print("Sorry, you lost this game. Better luck next time.")
-            team_wins = 0
+            if not team2_list[14]:
+                print("Sorry, you lost this game. Better luck next time.")
+            team_wins = -1
         if isfollowon:
             print(T1, "wins by", 10 - score2_wickets, "wickets")
         else:
@@ -369,37 +360,65 @@ if not innings_victory:
     # Team batting second successfully chases its target
     elif team1_totalscore < team2_totalscore:
         if toss_chosen == "bat":
-            print("Sorry, you lost this game. Better luck next time.")
-            team_wins = 0
-        else:
-            print("Congratulations, you won!")
+            if not team2_list[14]:
+                print("Sorry, you lost this game. Better luck next time.")
             team_wins = 1
+        else:
+            if not team2_list[14]:
+                print("Congratulations, you won!")
+            team_wins = -1
         if isfollowon:
             print(T2, "wins by", team2_totalscore - team1_totalscore, "runs")
         else:
             print(T2, "wins by", 10 - score2_wickets, "wickets")
     # Scores are level - Match tied.
     else:
-        print("Tied")
+        print("Match Tied")
         team_wins = 0
 
-# Update the playcount and wincount based on the result
-player_teamfile = "teams/team" + str(T3) + ".json"
-with open(player_teamfile, 'r') as match_file:
-    team_data_object = json.load(match_file)
-    games_played_old = team_data_object["games_played"]
-    games_won_old = team_data_object["games_won"]
-games_played_new = games_played_old + 1
-if team_wins == 0:
-    games_won_new = games_won_old
+# Open the team files and update only human results.
+if team1_list[14]:
+    player_teamfile1 = "teams/team" + str(T1) + ".json"
 else:
-    games_won_new = games_won_old + 1
-team_data_object["games_played"] = games_played_new
-team_data_object["games_won"] = games_won_new
-match_file.close()
-match_file_write = open(player_teamfile, "w")
-json.dump(team_data_object, match_file_write, indent=4)
-match_file_write.close()
+    player_teamfile1 = "ai_opponent/team" + str(T1) + ".json"
+if team2_list[14]:
+    player_teamfile2 = "teams/team" + str(T2) + ".json"
+else:
+    player_teamfile2 = "ai_opponent/team" + str(T2) + ".json"
+with open(player_teamfile1, 'r') as match_file1:
+    team_data_object1 = json.load(match_file1)
+    if team_data_object1["isHuman"]:
+        team_data_object1["games_played"] += 1
+with open(player_teamfile2, 'r') as match_file2:
+    team_data_object2 = json.load(match_file2)
+    if team_data_object2["isHuman"]:
+        team_data_object2["games_played"] += 1
+
+# Update the playcount and wincount based on the result
+if team_wins == 1:
+    if team_data_object1["isHuman"]:
+        team_data_object1["games_won"] += 1
+    if team_data_object2["isHuman"]:
+        team_data_object2["games_lost"] += 1
+elif team_wins == -1:
+    if team_data_object1["isHuman"]:
+        team_data_object1["games_lost"] += 1
+    if team_data_object2["isHuman"]:
+        team_data_object2["games_won"] += 1
+elif team_wins == 0:
+    if team_data_object1["isHuman"]:
+        team_data_object1["tests_tied"] += 1
+    if team_data_object2["isHuman"]:
+        team_data_object2["tests_tied"] += 1
+# Save statistics only if the teams have human players.
+if team_data_object1["isHuman"]:
+    match_file_write1 = open(player_teamfile1, "w")
+    json.dump(team_data_object1, match_file_write1, indent=4)
+    match_file_write1.close()
+if team_data_object2["isHuman"]:
+    match_file_write2 = open(player_teamfile2, "w")
+    json.dump(team_data_object2, match_file_write2, indent=4)
+    match_file_write2.close()
 
 # Save the statistics.
 game_data = {
@@ -416,8 +435,20 @@ game_data = {
 saveGame(game_data)
 
 # Display the team stats at the end of the match
-winpercentage = (games_won_new * 100) / games_played_new
-print("Games played: ", games_played_new)
-print("Games won: ", games_won_new)
-print("Win Percentage", winpercentage)
+print(" ")
+print("Stats: ")
+if team_data_object1["isHuman"]:
+    print("Team:", T1)
+    winpercentage1 = (team_data_object1["games_won"] * 100)
+    winpercentage1 /= team_data_object1["games_played"]
+    print("Games played: ", team_data_object1["games_played"])
+    print("Games won: ", team_data_object1["games_won"])
+    print("Win Percentage", winpercentage1)
+if team_data_object2["isHuman"]:
+    print("Team:", T2)
+    winpercentage2 = (team_data_object2["games_won"] * 100)
+    winpercentage2 /= team_data_object2["games_played"]
+    print("Games played: ", team_data_object2["games_played"])
+    print("Games won: ", team_data_object2["games_won"])
+    print("Win Percentage", winpercentage2)
 end_game_notify = input()
