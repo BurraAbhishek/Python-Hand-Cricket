@@ -1,8 +1,6 @@
 # Python-Hand-Cricket
 Play hand cricket as an individual or as a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in the [documentation](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/docs/Hand%20Cricket%20Python%20App%20Documentation.pdf).
 
-NOTE: Multiplayer support is planned even in this repository, for which, to register a match, the code has changed. When prompted, choose to play against the computer. Then, everything will work as usual
-
 ## About this game
 
 This is a hybrid of cricket and the legacy hand cricket game – implemented in Python and played using the command line interface.
@@ -23,9 +21,8 @@ NOTE: To play only the traditional hand cricket game, play a limited overs game,
 ### Modules:
 The source code is located in the [src](https://github.com/BurraAbhishek/Python-Hand-Cricket/tree/main/src) directory. The source code comprises of the following modules:
 - [Team setup](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/setupateam.py): Setup your team and it's members. Team members need not be unique, since only one person may actually be an entire team, i.e., the person wants to play as an individual. In that case, the person's name can be the name of each team member.
-- [Match registration](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/registerformatch.py): Register a match between your team and a computer-controlled opposition team. This module prepares an interface to recognize your team as the computer team's opposition for the upcoming match. Of course, you can play the match whenever you want. Set up your team first before using this module.
+- [Match registration](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/registerformatch.py): Register a match between your team and another team. To play against the computer, simply skip the play human option.
 - [Limited-overs game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgame.py): The limited-overs cricket module. 
-- [Super over](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgamesuperover.py): The super over tiebreaker. This module is now located in the modules directory, and this file is no longer maintained.
 - [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgametestcricket.py): The test cricket module. 
 #### Submodules:
 - [src/innings/scoring.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/scoring.py): The innings in which teams try to score big. In limited-overs cricket, this is always the first innings. In test cricket, this is the non-chasing innings.
@@ -34,8 +31,10 @@ The source code is located in the [src](https://github.com/BurraAbhishek/Python-
 - [src/modules/batting.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/batting.py): Module which contains the code for batting.
 - [src/modules/bowlerchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/bowlerchoice.py): From a given list of players, select the bowler.
 - [src/modules/bowling.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/bowling.py): Module which contains the code for bowling.
+- [src/modules/scoreinput.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/scoreinput.py): This module contains the code to play each ball by using the batting and bowling modules.
 - [src/modules/commentary.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/commentary.py): Generate the commentary for each ball bowled, based on the result of that ball.
 - [src/modules/scorecard.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/scorecard.py): Generate the innings scorecard at the end of each innings.
+- [src/modules/superover.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/superover.py): The super over tiebreaker. 
 - [src/modules/hashfunc.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/hashfunc.py): Contains the hashing and verification algorithms used, by importing the required modules. Therefore, if a stronger algorithm is found, it is easier to simply update the algorithm from this file than to update the algorithms everywhere.
 - [src/modules/toss.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/toss.py): Toss to decide which team bats / fields first. This code is not compatible with super over games, since this decision is the reverse of their decision in the latest tied game
 - [src/modules/followon.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/followon.py): Only works for test cricket. Determine whether the team which batted first can enforce the follow-on or not. This code runs only if the team batting first leads by a certain threshold.
