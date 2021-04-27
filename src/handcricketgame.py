@@ -200,22 +200,20 @@ if score1 > score2_runs:
     if toss_chosen == "bat":
         if not team_data_object2["isHuman"]:
             print("Congratulations, you won!")
-        team_wins = 1
     else:
-        if not team_data_object2["isHuman"]:
+        if not team_data_object1["isHuman"]:
             print("Sorry, you lost this game. Better luck next time.")
-        team_wins = -1
+    team_wins = 1
     print(T1, "wins by", score1 - score2_runs, "runs")
 # Team batting second successfully chases its target
 elif score1 < score2_runs:
     if toss_chosen == "bat":
         if not team_data_object2["isHuman"]:
             print("Sorry, you lost this game. Better luck next time.")
-        team_wins = -1
     else:
-        if not team_data_object2["isHuman"]:
+        if not team_data_object1["isHuman"]:
             print("Congratulations, you won!")
-        team_wins = 1
+    team_wins = -1
     print(T2, "wins by", 10 - score2_wickets, "wickets")
 # Scores are level - Match tied. Proceed to super over
 else:
