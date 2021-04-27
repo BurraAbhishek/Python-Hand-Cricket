@@ -171,22 +171,20 @@ def superOver(old_toss):
         if new_toss == "bat":
             if not team_data_object2["isHuman"]:
                 print("Congratulations, you won!")
-            team_wins = 1
         else:
             if not team_data_object2["isHuman"]:
                 print("Sorry, you lost this game. Better luck next time.")
-            team_wins = -1
+        team_wins = 1
         print(T1, "wins by super over.")
     # Team batting second successfully chases its target
     elif score1 < score2_runs:
         if new_toss == "bat":
             if not team_data_object2["isHuman"]:
                 print("Sorry, you lost this game. Better luck next time.")
-            team_wins = -1
         else:
             if not team_data_object2["isHuman"]:
                 print("Congratulations, you won!")
-            team_wins = 1
+        team_wins = -1
         print(T2, "wins by super over.")
     # Scores are level - Match tied.
     # We need to play another super over to decide the winner
