@@ -193,7 +193,7 @@ def scoringInnings(team_1_array,
                         # Outcome of the ball: 0, 1, 2, 3, 4, 5, 6, W.
                         # To declare test innings: Ball outcome: -1.
                         # Declaring innings works only in test cricket.
-                        if ball_outcome == -1:
+                        if ball_outcome == 'Declared':
                             run = 0
                             isInningsDeclared = True
                         # Batter scores runs
