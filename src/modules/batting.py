@@ -26,5 +26,5 @@ def bat(batter, is_declare_permitted, is_batter_human):
     # Declare the innings closed, if opted
     if is_declare_permitted:
         if user_bat_attempted == "Declare":
-            returned_runs = -1
+            returned_runs = '-1'
     return returned_runs
