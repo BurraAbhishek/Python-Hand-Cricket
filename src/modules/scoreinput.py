@@ -18,4 +18,9 @@ def playBall(bowler, batter, is_declare_permitted, bowler_human, batter_human):
         outcome = '0'
     else:
         outcome = str(bat_score)
+    if(bat_score == '-1'):
+        if is_declare_permitted:
+            outcome = 'Declared'
+        else:
+            outcome = '0'
     return outcome
