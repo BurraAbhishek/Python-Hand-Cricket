@@ -267,31 +267,29 @@ if team2_score1 + team2_score2 < team1_score1 and isfollowon:
     if toss_chosen == "bat":
         if not team2_list[14]:
             print("Congratulations, you won!")
-        team_wins = 1
     else:
-        if not team2_list[14]:
+        if not team1_list[14]:
             print("Sorry, you lost this game. Better luck next time.")
-        team_wins = -1
     innings_win_message = (str(T1)
                            + " wins by an innings and "
                            + str(team1_score1 - (team2_score1 + team2_score2))
                            + " runs")
     print(innings_win_message)
+    team_wins = 1
 elif team1_score1 + team1_score2 < team2_score1 and not isfollowon:
     innings_victory = True
     if toss_chosen == "bat":
         if not team2_list[14]:
             print("Sorry, you lost this game. Better luck next time.")
-        team_wins = 1
     else:
-        if not team2_list[14]:
+        if not team1_list[14]:
             print("Congratulations, you won!")
-        team_wins = -1
     innings_win_message = (str(T2)
                            + " wins by an innings and "
                            + str(team2_score1 - (team1_score1 + team1_score2))
                            + " runs")
     print(innings_win_message)
+    team_wins = -1
 # If the result is not an innings victory,
 # play the second innings of the other team.
 if not innings_victory:
@@ -348,29 +346,27 @@ if not innings_victory:
         if toss_chosen == "bat":
             if not team2_list[14]:
                 print("Congratulations, you won!")
-            team_wins = 1
         else:
-            if not team2_list[14]:
+            if not team1_list[14]:
                 print("Sorry, you lost this game. Better luck next time.")
-            team_wins = -1
         if isfollowon:
             print(T1, "wins by", 10 - score2_wickets, "wickets")
         else:
             print(T1, "wins by", team1_totalscore - team2_totalscore, "runs")
+        team_wins = 1
     # Team batting second successfully chases its target
     elif team1_totalscore < team2_totalscore:
         if toss_chosen == "bat":
             if not team2_list[14]:
                 print("Sorry, you lost this game. Better luck next time.")
-            team_wins = 1
         else:
-            if not team2_list[14]:
+            if not team1_list[14]:
                 print("Congratulations, you won!")
-            team_wins = -1
         if isfollowon:
             print(T2, "wins by", team2_totalscore - team1_totalscore, "runs")
         else:
             print(T2, "wins by", 10 - score2_wickets, "wickets")
+        team_wins = -1
     # Scores are level - Match tied.
     else:
         print("Match Tied")
