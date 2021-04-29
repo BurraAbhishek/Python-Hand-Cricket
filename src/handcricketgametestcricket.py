@@ -121,7 +121,7 @@ print(followon_minscore_notify)
 
 # Variable toss_chosen holds the decision from the toss:
 # bat first or field first
-toss_chosen = toss.tossPlay()
+toss_chosen = toss.tossPlay(team_data1, team2_data)
 if toss_chosen == "bat":
     toss_reversed = "field"
 else:
