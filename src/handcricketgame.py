@@ -83,7 +83,7 @@ if wickets_choice < 1 or wickets_choice > 10:
 print("Total:", wickets_choice, "wickets game")
 
 # Variable toss_chosen holds the outcome of the toss: bat or field first
-toss_chosen = toss.tossPlay()
+toss_chosen = toss.tossPlay(team_data1, team_data2)
 
 # Prepare the team structure if team1 chooses to bat first
 if toss_chosen == "bat":
