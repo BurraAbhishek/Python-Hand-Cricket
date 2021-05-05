@@ -4,7 +4,7 @@ from modules import hashfunc
 
 
 def setup_match():
-    """ Setup a game between the user and an AI-controlled bot.
+    """ Setup a game between two teams.
 
     Arguments: None
 
