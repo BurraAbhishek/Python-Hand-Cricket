@@ -22,7 +22,7 @@ def getUniqueSavefile():
     if result:
         result_file = filename
     else:
-        result_file = get_unique_savefile()
+        result_file = getUniqueSavefile()
     return result_file
 
 
