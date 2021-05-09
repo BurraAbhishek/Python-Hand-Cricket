@@ -1,6 +1,8 @@
 import json
 import os
+import datetime
 from modules import hashfunc
+from modules import savegamedata
 
 
 def setup_match():
@@ -11,9 +13,7 @@ def setup_match():
     While running the function, the team file is read from the 'teams' folder.
 
     Returns:
-    A JSON file (team1.json or team2.json) in the current directory.
-    This file is a copy of the team file,
-    except that the passwords may not match.
+    None. Updates the match pairings
 
     """
 
@@ -36,62 +36,63 @@ def setup_match():
             print("To play against a human team, type 'human' and hit 'Enter'")
             print("To play against the usual computer team, just hit 'Enter'.")
             opponent_choice = input()
-            # Get user password.
-            match_key = input("Enter your password: ")
-            match_hash = hashfunc.hash_password(match_key)
+            # Get game ID.
+            gameidfile = savegamedata.getUniqueSavefile()
+            gameid = gameidfile[12:-5]
+            thisGameID = True
             # If opponent is computer, load the computer team as opponent.
             if(opponent_choice != 'human'):
-                with open('ai_opponent/teamComputer.json', 'r') as team2:
-                    ai_opponent_json = json.load(team2)
-                    ai_team2_data = {
-                        "team_name": ai_opponent_json["team_name"],
-                        "team_members": ai_opponent_json["team_members"],
-                        "games_played": ai_opponent_json["games_played"],
-                        "games_won": ai_opponent_json["games_won"],
-                        "password": match_hash
-                        }
-                match_team2_file = open("team2.json", 'w')
-                json.dump(ai_team2_data, match_team2_file, indent=4)
-                match_team2_file.close()
-            # Convert the JSON into text file
-            team_data = {
-                    "team_name": team_data_json["team_name"],
-                    "team_members": team_data_json["team_members"],
-                    "games_played": team_data_json["games_played"],
-                    "games_won": team_data_json["games_won"],
-                    "password": match_hash
+                pairing = {
+                    "team1": teamname,
+                    "team1_human": True,
+                    "team1_confirm": True,
+                    "team2": "Computer",
+                    "team2_human": False,
+                    "team2_confirm": True,
+                    "gameid": hashfunc.hash_password(gameid),
+                    "timestamp": datetime.datetime.now().timestamp()
                     }
-            # team1.json contains details of the team running this module.
-            # If team1.json exists, then it's team2.json
-            # Copy all contents except the password from the original team file
-            # While playing, the list of players is obtained from the JSON file
+                insertGameLog(pairing)
+            # If opponent is human, pick an opponent or create a fresh pairing.
             if(opponent_choice == "human"):
-                try:
-                    try:
-                        # Team1 and Team2 set, remove Team2 and assign Team1
-                        test_file_if_engine = open("team2.json", "r")
-                        test_file_if_engine.close()
-                        os.remove("team2.json")
-                        match_team_file = open("team1.json", "w")
-                    except:
-                        try:
-                            # Team1 waits for opponent, Team2: Your team
-                            with open("team1.json", 'r') as match_team_file1:
-                                team1_opponent = json.load(match_team_file1)
-                                team1_teamname = team1_opponent["team_name"]
-                                print("Your opponent is", team1_teamname)
-                                match_team_file = open("team2.json", 'w')
-                        except:
-                            # Team1: Your team. Wait for Team2
-                            match_team_file = open("team1.json", 'w')
-                except:
-                    match_team_file = open("team1.json", 'w')
+                print("Do you want to choose your opponent (Y/N)")
+                chooseopponentflag = input()
+                if chooseopponentflag == 'Y':
+                    # Create a match pairing.
+                    opponent_teamname = findHumanOpponentExists(teamname)
+                    if not checkPairingChosen(teamname, opponent_teamname):
+                        pairing = {
+                            "team1": teamname,
+                            "team1_human": True,
+                            "team1_confirm": True,
+                            "team2": opponent_teamname,
+                            "team2_human": True,
+                            "team2_confirm": False,
+                            "gameid": hashfunc.hash_password(gameid),
+                            "timestamp": datetime.datetime.now().timestamp()
+                            }
+                        insertGameLog(pairing)
+                    else:
+                        thisGameID = False
+                if chooseopponentflag != 'Y':
+                    pairing = {
+                        "team1": teamname,
+                        "team1_human": True,
+                        "team1_confirm": True,
+                        "team2": None,
+                        "team2_human": True,
+                        "team2_confirm": False,
+                        "gameid": hashfunc.hash_password(gameid),
+                        "timestamp": datetime.datetime.now().timestamp()
+                        }
+                    insertGameLog(pairing)
+            print("Your match is registered.")
+            if thisGameID:
+                print("Your match ID is: ")
+                print(gameid)
+                print("Share this match ID only with your opponent.")
             else:
-                # Team1: Your team, Team2: Computer
-                print("Your opponent is Computer")
-                match_team_file = open("team1.json", 'w')
-            json.dump(team_data, match_team_file, indent=4)
-            match_team_file.close()
+                print("Please ask your opponent for the match ID.")
             confirm_read = input("Press 'Enter' key to complete this process.")
         else:
             print("The keys did not match.")
@@ -100,8 +101,67 @@ def setup_match():
 
     # If team file doesn't exist, we can't setup the match.
     except:
-        print("Team", teamname, "is not available. \
-    Please set up your team before proceeding.")
+        print("Team", teamname, "is not available.")
+        print("Please set up your team before proceeding.")
         confirm_unavailable = input()
+
+
+def findHumanOpponentExists(player):
+    """ Checks if an opponent team exists """
+
+    opponent_teamname = input("Choose your opponent team by name: ")
+    try:
+        if player == opponent_teamname:
+            raise Exception("Playing against yourself is strictly prohibited.")
+        teamfilename = "teams/team" + opponent_teamname + ".json"
+        teamfile = open(teamfilename, "r")
+        teamfile.close()
+    except:
+        print("Chosen team doesn't exist. ")
+        opponent_teamname = findHumanOpponentExists(player)
+    return opponent_teamname
+
+
+def checkPairingChosen(player, opponent):
+    """ Chooses a match among various pairings """
+
+    try:
+        chosenPairIndex = -1
+        chooseFrozen = False
+        with open("matchpairings.json", 'r') as matchpairings:
+            pairings = json.load(matchpairings)
+            for i in pairings:
+                if i["team1"] == opponent and not chooseFrozen:
+                    if i["team2"] == player:
+                        i["team2_confirm"] = True
+                        i["timestamp"] = datetime.datetime.now().timestamp()
+                        chooseFrozen = True
+                    elif i["team2"] is None:
+                        i["team2"] = player
+                        i["team2_confirm"] = True
+                        i["timestamp"] = datetime.datetime.now().timestamp()
+                        chooseFrozen = True
+        if chooseFrozen:
+            f = open("matchpairings.json", "w")
+            json.dump(pairings, f, indent=4)
+            f.close()
+    except:
+        print("")
+    return chooseFrozen
+
+
+def insertGameLog(details):
+    """ Adds a game into the match pairings """
+
+    try:
+        with open("matchpairings.json", 'r') as matchpairings:
+            pairings = json.load(matchpairings)
+            pairings.append(details)
+    except:
+        pairings = [details]
+    finally:
+        pairing_file = open("matchpairings.json", "w")
+        json.dump(pairings, pairing_file, indent=4)
+        pairing_file.close()
 
 setup_match()
