@@ -7,7 +7,7 @@ import sys
 from modules import hashfunc
 from modules import toss
 from modules.followon import checkFollowOn
-from modules.savegamedata import saveGame
+from modules.savegamedata import saveGameToID
 
 from innings.scoring import scoringInnings
 from innings.chasing import chasingInnings
@@ -71,31 +71,46 @@ innings = 1
 # Decided after both teams complete their first innings.
 isfollowon = False
 
-# Enter the password required to play the match
-# input_password: User input password
-# match_password: Required password (Either team1 or team2 can type)
-with open("team1.json", 'r') as match_file1:
-    team_data1 = json.load(match_file1)
-match_file1.close()
-with open("team2.json", 'r') as match_file2:
-    team_data2 = json.load(match_file2)
-match_file2.close()
-match_password1 = team_data1["password"]
-match_password2 = team_data2["password"]
-print("Playing game:", team_data1["team_name"], "Vs.", team_data2["team_name"])
-input_password = input("Enter match password: ")
+# Enter the match ID: This is required for the teams
+matchID = input("Enter the match ID: ")
+pairIsPlaying = False
+try:
+    with open("matchpairings.json", 'r') as pairing_file:
+        pairing = json.load(pairing_file)
+        for i in pairing:
+            if hashfunc.verify_password(matchID, i["gameid"]):
+                pairIsPlaying = True
+                if i["team1_human"]:
+                    team1_teamfile = "teams/team" + i["team1"] + ".json"
+                else:
+                    team1_teamfile = "ai_opponent/team" + i["team1"] + ".json"
+                if i["team2_human"]:
+                    team2_teamfile = "teams/team" + i["team2"] + ".json"
+                else:
+                    team2_teamfile = "ai_opponent/team" + i["team2"] + ".json"
+                with open(team1_teamfile, 'r') as match_file1:
+                    team_data1 = json.load(match_file1)
+                match_file1.close()
+                with open(team2_teamfile, 'r') as match_file2:
+                    team_data2 = json.load(match_file2)
+                match_file2.close()
+                match_playing_string = "Playing game: "
+                match_playing_string += team_data1["team_name"]
+                match_playing_string += " Vs. "
+                match_playing_string += team_data2["team_name"]
+                print(match_playing_string)
+                pairing.pop(pairing.index(i))
+                pairing_file2 = open("matchpairings.json", 'w')
+                json.dump(pairing, pairing_file2, indent=4)
+                pairing_file2.close()
+except:
+    pairIsPlaying = False
 
-# Exit if the password is wrong.
-if (not hashfunc.verify_password(input_password, match_password1)
-        and not hashfunc.verify_password(input_password, match_password2)):
-    print("Sorry, wrong password! ")
-    print("Ensure that you type the match password, not your team password.")
-    print("Ensure that you enter the correct password before proceeding.")
-    wrong_password_notify = input()
+# Exit if pair is missing.
+if not pairIsPlaying:
     sys.exit(0)
 
-
-# Validate the password and proceed to the game
+# At this stage the pairing is confirmed
 try:
     print("By default, this is a 10-wickets match, unless specified otherwise")
     wickets_choice = int(input("How many wickets for each team? "))
@@ -428,7 +443,7 @@ game_data = {
         "team2_innings2_data": team2_innings2_data
         }
     }
-saveGame(game_data)
+saveGameToID(game_data, matchID)
 
 # Display the team stats at the end of the match
 print(" ")
