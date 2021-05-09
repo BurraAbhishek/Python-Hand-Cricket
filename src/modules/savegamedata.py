@@ -31,3 +31,10 @@ def saveGame(data):
     savefile = open(filename, 'w')
     json.dump(data, savefile, indent=4)
     savefile.close()
+
+
+def saveGameToID(data, gameid):
+    filename = "saved_games/" + gameid + ".json"
+    savefile = open(filename, 'w')
+    json.dump(data, savefile, indent=4)
+    savefile.close()
