@@ -10,7 +10,7 @@ from innings.scoring import scoringInnings
 from innings.chasing import chasingInnings
 
 
-def superOver(old_toss):
+def superOver(old_toss, team1_teamfile, team2_teamfile):
     # Score for each ball faced in the first innings
     innings1_data = {
         "battingteam": "Waiting for toss",
@@ -52,10 +52,10 @@ def superOver(old_toss):
     print("Total:", wickets_choice, "wickets game")
 
     # Team files
-    with open("team1.json", 'r') as match_file1:
+    with open(team1_teamfile, 'r') as match_file1:
         team_data1 = json.load(match_file1)
     match_file1.close()
-    with open("team2.json", 'r') as match_file2:
+    with open(team2_teamfile, 'r') as match_file2:
         team_data2 = json.load(match_file2)
     match_file2.close()
 
@@ -190,7 +190,7 @@ def superOver(old_toss):
     # We need to play another super over to decide the winner
     else:
         print("Tied")
-        team_wins = 0 - (superOver(new_toss))
+        team_wins = 0 - (superOver(new_toss, team1_teamfile, team2_teamfile))
 
     # Save the statistics.
     game_data = {
