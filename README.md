@@ -52,7 +52,7 @@ This game is a hybrid of cricket and hand cricket and runs on the Python Command
 
 The ultimate goal is simple: Score more than your opponent to win.
 ### Pre-requisites:
-To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 4 April 2021 is Python 3.9.4. Go to https://www.python.org/downloads to install the latest version.
+To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 3 May 2021 is Python 3.9.5. Go to https://www.python.org/downloads to install the latest version.
 
 Supported platforms:
 -	Microsoft Windows 7 or later
