@@ -52,7 +52,7 @@ This game is a hybrid of cricket and hand cricket and runs on the Python Command
 
 The ultimate goal is simple: Score more than your opponent to win.
 ### Pre-requisites:
-To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 3 May 2021 is Python 3.9.5. Go to https://www.python.org/downloads to install the latest version.
+To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 28 June 2021 is Python 3.9.6. Go to https://www.python.org/downloads to install the latest version.
 
 Supported platforms:
 -	Microsoft Windows 7 or later
@@ -77,8 +77,6 @@ Disk space: 32 MB (minimum), 256 MB or more (recommended).
 ### Known bugs
 
 Rain delay and abandoned matches are not yet implemented in this game. However, deliberately closing the application in order to avoid losing a match is considered as an abandoned match. This issue can't be fixed, since there are other ways to get around it, for example, by manually editing the JSON team files.
-
-Since this is a local implementation, moderation won't apply here. So, you can cheat as much as you want. An online implementation of this game is being implemented in [another repository](https://github.com/BurraAbhishek/HandCricket-Multiplayer). It is still under development and open to contributions.
 
 # License
 
