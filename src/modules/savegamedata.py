@@ -6,7 +6,7 @@ import json
 
 def generateFilename(size):
     game_data_savename = ''.join([random.choice(string.ascii_uppercase
-        + string.ascii_lowercase + string.digits) for n in range(12)])
+        + string.ascii_lowercase + string.digits) for n in range(size)])
     return game_data_savename
 
 
