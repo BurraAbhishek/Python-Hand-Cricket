@@ -1,5 +1,3 @@
-import random
-import ast
 import math
 import json
 import sys
@@ -136,7 +134,7 @@ print(followon_minscore_notify)
 
 # Variable toss_chosen holds the decision from the toss:
 # bat first or field first
-toss_chosen = toss.tossPlay(team_data1, team2_data)
+toss_chosen = toss.tossPlay(team_data1, team_data2)
 if toss_chosen == "bat":
     toss_reversed = "field"
 else:
@@ -211,7 +209,6 @@ team1_score1 = scoringInnings(team_1_array=team1_list,
                               team_2_array=team2_list,
                               innings=innings,
                               bat_bowl_choice=toss_chosen,
-                              batting_score=team1_score1,
                               innings_data=team1_innings1_data,
                               start_message="Team 1 - First Innings",
                               max_overs=math.inf,
@@ -221,7 +218,6 @@ team2_score1 = scoringInnings(team_1_array=team2_list,
                               team_2_array=team1_list,
                               innings=innings,
                               bat_bowl_choice=toss_reversed,
-                              batting_score=team2_score1,
                               innings_data=team2_innings1_data,
                               start_message="Team 2 - First Innings",
                               max_overs=math.inf,
@@ -230,16 +226,13 @@ team2_score1 = scoringInnings(team_1_array=team2_list,
 
 # Check if follow-on is required or not, and then proceed accordingly.
 if team1_score1 - team2_score1 >= followon_choice:
-    isfollowon = checkFollowOn(team1_name=T1,
-                               team2_name=T2,
-                               is_team1_human=team1_list[14])
+    isfollowon = checkFollowOn(is_team1_human=team1_list[14])
     if isfollowon:
         print("Follow-on enforced by", T1)
         team2_score2 = scoringInnings(team_1_array=team2_list,
                                       team_2_array=team1_list,
                                       innings=innings,
                                       bat_bowl_choice=toss_reversed,
-                                      batting_score=team2_score2,
                                       innings_data=team2_innings2_data,
                                       start_message="Team 2 - Second Innings",
                                       max_overs=math.inf,
@@ -253,7 +246,6 @@ if team1_score1 - team2_score1 >= followon_choice:
                                       team_2_array=team2_list,
                                       innings=innings,
                                       bat_bowl_choice=toss_chosen,
-                                      batting_score=team1_score2,
                                       innings_data=team1_innings2_data,
                                       start_message="Team 1 - Second Innings",
                                       max_overs=math.inf,
@@ -266,7 +258,6 @@ else:
                                   team_2_array=team2_list,
                                   innings=innings,
                                   bat_bowl_choice=toss_chosen,
-                                  batting_score=team1_score2,
                                   innings_data=team1_innings2_data,
                                   start_message="Team 1 - Second Innings",
                                   max_overs=math.inf,
@@ -318,7 +309,6 @@ if not innings_victory:
                                       opponent_netscore=(team2_score1
                                                          + team2_score2
                                                          - team1_score1),
-                                      batting_score=team1_score2,
                                       innings_data=team1_innings2_data,
                                       start_message="Team 1 - Second Innings",
                                       max_overs=math.inf,
@@ -340,7 +330,6 @@ if not innings_victory:
                                       opponent_netscore=(team1_score1
                                                          + team1_score2
                                                          - team2_score1),
-                                      batting_score=team2_score2,
                                       innings_data=team2_innings2_data,
                                       start_message="Team 2 - Second Innings",
                                       max_overs=math.inf,
