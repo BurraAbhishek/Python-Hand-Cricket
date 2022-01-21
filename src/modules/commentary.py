@@ -1,5 +1,12 @@
 import random
-# Contains the commentary notes.
+
+
+def shout(s: str) -> str:
+    cleaned = ' '.join(s.split())
+    return cleaned
+
+
+# This module contains the commentary notes.
 
 # Wickets
 
@@ -95,21 +102,20 @@ commentary_0runs = [
     ", NO RUN. The batters wanted to run, but the fielders were too quick.",
 ]
 
-
 def scoreRun(score: str, bowler: str, batter: str) -> None:
     if score == '6':
-        print(bowler, "to", batter, random.choice(commentary_6runs))
+        print(bowler, "to", batter, shout(random.choice(commentary_6runs)))
     elif score == '5':
-        print(bowler, "to", batter, random.choice(commentary_5runs))
+        print(bowler, "to", batter, shout(random.choice(commentary_5runs)))
     elif score == '4':
-        print(bowler, "to", batter, random.choice(commentary_4runs))
+        print(bowler, "to", batter, shout(random.choice(commentary_4runs)))
     elif score == '3':
-        print(bowler, "to", batter, random.choice(commentary_3runs))
+        print(bowler, "to", batter, shout(random.choice(commentary_3runs)))
     elif score == '2':
-        print(bowler, "to", batter, random.choice(commentary_2runs))
+        print(bowler, "to", batter, shout(random.choice(commentary_2runs)))
     elif score == '1':
-        print(bowler, "to", batter, random.choice(commentary_1runs))
+        print(bowler, "to", batter, shout(random.choice(commentary_1runs)))
     elif score == '0':
-        print(bowler, "to", batter, random.choice(commentary_0runs))
+        print(bowler, "to", batter, shout(random.choice(commentary_0runs)))
     elif score == 'W':
-        print(bowler, "to", batter, ", OUT", outCall())
+        print(bowler, "to", batter, ", OUT", shout(outCall()))
