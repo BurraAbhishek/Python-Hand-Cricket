@@ -6,7 +6,7 @@
 # innings: 1st innings or 2nd innings
 
 
-def printBatterStats(player, batters_list):
+def printBatterStats(player: str, batters_list: dict) -> None:
     if(batters_list[player][1] < 1):
         statstring = str(player) + " did not bat."
     else:
@@ -35,7 +35,7 @@ def printBatterStats(player, batters_list):
     print(statstring)
 
 
-def printBowlerStats(player, bowlers_list):
+def printBowlerStats(player: str, bowlers_list: dict) -> None:
     if(bowlers_list[player][0] > 0):
         statstring = (str(player)
                       + ": "
@@ -49,11 +49,11 @@ def printBowlerStats(player, bowlers_list):
         print(statstring)
 
 
-def scoreCard(batters_list,
-              bowlers_list,
-              team1_players,
-              team2_players,
-              innings):
+def scoreCard(batters_list: dict,
+              bowlers_list: dict,
+              team1_players: list,
+              team2_players: list,
+              innings: int) -> None:
     # Batting Statistics
     print("Batting")
     if innings == 1:
