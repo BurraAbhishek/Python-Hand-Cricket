@@ -1,5 +1,3 @@
-import random
-import ast
 import json
 import sys
 
@@ -169,7 +167,6 @@ score1 = scoringInnings(team_1_array=team1_list,
                         team_2_array=team2_list,
                         innings=innings,
                         bat_bowl_choice=toss_chosen,
-                        batting_score=score1,
                         innings_data=innings1_data,
                         start_message="First Innings",
                         max_overs=overs_choice,
@@ -184,16 +181,15 @@ score2 = chasingInnings(team_1_array=team1_list,
                         innings=innings,
                         bat_bowl_choice=toss_chosen,
                         opponent_netscore=score1,
-                        batting_score=score2,
                         innings_data=innings2_data,
                         start_message="Second Innings",
                         max_overs=overs_choice,
                         max_wickets=wickets_choice,
                         is_test=False)
 # Score at the end of second innings
-score2_runs = score2[0]
+score2_runs = int(score2[0])
 # Number of wickets fallen at the end of second innings
-score2_wickets = score2[1]
+score2_wickets = int(score2[1])
 # Open the team files and update only human results.
 if team1_list[14]:
     player_teamfile1 = "teams/team" + str(T1) + ".json"
