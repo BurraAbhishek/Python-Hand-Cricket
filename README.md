@@ -5,7 +5,7 @@ Play hand cricket as an individual or as a team of 11 against a team of 11 bots 
 
 This is a hybrid of cricket and the legacy hand cricket game – implemented in Python and played using the command line interface.
 
-This game was built entirely on Python 3.7.4. It is compatible with all releases of Python 3.5 and later.
+This game was built entirely on Python 3.7.4. It is compatible with all releases of Python 3.6 and later.
 
 The game can be played even without an internet connection.
 
@@ -52,13 +52,13 @@ This game is a hybrid of cricket and hand cricket and runs on the Python Command
 
 The ultimate goal is simple: Score more than your opponent to win.
 ### Pre-requisites:
-To play this game, you need to have Python software installed. The software was built on Python 3.7.4, while the newest release as of 28 June 2021 is Python 3.9.6. Go to https://www.python.org/downloads to install the latest version.
+To play this game, you need to have Python software installed. Go to https://www.python.org/downloads to install the latest version.
 
 Supported platforms:
--	Microsoft Windows 7 or later
--	Android API 24 or later (Apps are available on the Play Store)
--	Mac OS X 10.6 or later
--	Linux 
+-	[Microsoft Windows 7 (Upto Python 3.8) or later](https://www.python.org/downloads/windows/)
+-	[Mac OS X 10.6 or later](https://www.python.org/downloads/macos/)
+-	[Linux/UNIX](https://www.python.org/downloads/source/)
+-	[Other platforms](https://www.python.org/download/other/)
 
 Either download this entire repository to play this game, or clone this repository using:
 
