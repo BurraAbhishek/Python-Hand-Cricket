@@ -29,7 +29,7 @@ Hence, they are not allowed.")
     # These team names are not permitted because they are reserved.
     reserved_names = ["CPU", "Computer", ""]
     if teamname in reserved_names:
-        perror_sysreserved = input("System reserved, \
+        _ = input("System reserved, \
 can't give you chosen team. Hit 'Enter', and then try again.")
     else:
         # Name of the text file where the team data will be saved.
@@ -38,7 +38,7 @@ can't give you chosen team. Hit 'Enter', and then try again.")
             # Check if the team already exists.
             f = open(file_name, 'r')
             f.close()
-            perror_duplicateteamname = input("Team name exists already, \
+            _ = input("Team name exists already, \
 hence can't give you same team. Hit 'Enter', and then try again.")
         except:
             team_member_names = []
