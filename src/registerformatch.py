@@ -4,7 +4,7 @@ from modules import hashfunc
 from modules import savegamedata
 
 
-def setup_match():
+def setup_match() -> None:
     """ Setup a game between two teams.
 
     Arguments: None
@@ -105,7 +105,7 @@ def setup_match():
         confirm_unavailable = input()
 
 
-def findHumanOpponentExists(player):
+def findHumanOpponentExists(player: str) -> str:
     """ Checks if an opponent team exists """
 
     opponent_teamname = input("Choose your opponent team by name: ")
@@ -121,11 +121,19 @@ def findHumanOpponentExists(player):
     return opponent_teamname
 
 
-def checkPairingChosen(player, opponent):
-    """ Chooses a match among various pairings """
+def checkPairingChosen(player: str, opponent: str) -> bool:
+    """ Chooses a match among various pairings 
+
+    Arguments:
+    player: str. The name of your team.
+    opponent: str. The name of your opponent team.
+
+    Returns:
+    A boolean value which checks if the pairing is confirmed.
+
+    """
 
     try:
-        chosenPairIndex = -1
         chooseFrozen = False
         with open("matchpairings.json", 'r') as matchpairings:
             pairings = json.load(matchpairings)
@@ -149,7 +157,7 @@ def checkPairingChosen(player, opponent):
     return chooseFrozen
 
 
-def insertGameLog(details):
+def insertGameLog(details: dict) -> None:
     """ Adds a game into the match pairings """
 
     try:
