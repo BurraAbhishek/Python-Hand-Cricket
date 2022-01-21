@@ -1,5 +1,4 @@
 import json
-import os
 import datetime
 from modules import hashfunc
 from modules import savegamedata
