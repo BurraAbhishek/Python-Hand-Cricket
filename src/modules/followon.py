@@ -3,7 +3,7 @@ import random
 # This module is used only in test cricket, NOT in limited overs cricket
 
 
-def checkFollowOn(team1_name, team2_name, is_team1_human):
+def checkFollowOn(is_team1_human: bool) -> bool:
     is_human = True
     if not is_team1_human:
         # The computer batted first.
