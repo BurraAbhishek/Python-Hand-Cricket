@@ -92,17 +92,17 @@ def setup_match() -> None:
                 print("Share this match ID only with your opponent.")
             else:
                 print("Please ask your opponent for the match ID.")
-            confirm_read = input("Press 'Enter' key to complete this process.")
+            _ = input("Press 'Enter' key to complete this process.")
         else:
             print("The keys did not match.")
             print("Forgot your key? Contact support for key reset.")
-            assume_forgotten = input()
+            _ = input()
 
     # If team file doesn't exist, we can't setup the match.
     except:
         print("Team", teamname, "is not available.")
         print("Please set up your team before proceeding.")
-        confirm_unavailable = input()
+        _ = input()
 
 
 def findHumanOpponentExists(player: str) -> str:
