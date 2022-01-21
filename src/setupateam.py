@@ -2,7 +2,7 @@ import json
 from modules import hashfunc
 
 
-def team_setup():
+def team_setup() -> None:
     """ Creates a new JSON file containing all the team details
 
     Usage:
@@ -11,8 +11,9 @@ def team_setup():
     Arguments: None.
 
     Returns:
-    A JSON file containing all the team details, saved in the 'teams' directory
-    This JSON file is compatible with the multiplayer version.
+    None.
+    A JSON file containing all the team details
+    is saved in the 'teams' directory
 
     Working:
     During runtime, the following inputs are required:
@@ -25,6 +26,7 @@ def team_setup():
     print("NOTE: Team names 'Computer' and 'CPU' are system reserved. \
 Hence, they are not allowed.")
     teamname = input("Team name: ")
+    # These team names are not permitted because they are reserved.
     reserved_names = ["CPU", "Computer", ""]
     if teamname in reserved_names:
         perror_sysreserved = input("System reserved, \
@@ -76,6 +78,6 @@ hence can't give you same team. Hit 'Enter', and then try again.")
             print("Open the Match registration module to play a match.")
             print("It's a good idea to close this module for security reasons")
             print("Hit 'Enter' to continue")
-            success_notification = input()
+            _ = input()
 
 team_setup()
