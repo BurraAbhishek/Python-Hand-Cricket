@@ -1,9 +1,7 @@
 import random
 
-# Player is batting
 
-
-def bat(batter, is_declare_permitted, is_batter_human):
+def bat(is_declare_permitted: bool, is_batter_human: bool) -> str:
     # Get the player scoring attempt as an input
     if(is_batter_human):
         print("Batting: Type your scoring choice in {0, 1, 2, 3, 4, 5, 6}")
