@@ -1,9 +1,5 @@
-import random
-import ast
 import json
-import sys
 
-from modules import hashfunc
 from modules.savegamedata import saveGame
 
 from innings.scoring import scoringInnings
