@@ -5,7 +5,7 @@ import random
 # Otherwise, you lose the toss.
 
 
-def tossPlay(team1_data, team2_data):
+def tossPlay(team1_data: dict, team2_data: dict) -> str:
     """ Toss for cricket matches, using the odd-or-even concept
 
     Arguments:
@@ -26,7 +26,6 @@ def tossPlay(team1_data, team2_data):
 
     """
 
-    play_start_with_possibilities = ["bat", "field"]
     print("Time for the toss!")
     # NOTE: We will not enforce the 0 to 6 constraint.
     # Generally, people play in that range.
@@ -97,9 +96,10 @@ def tossPlay(team1_data, team2_data):
     return choice
 
 
-def human_chooses_toss(team_name):
+def human_chooses_toss(team_name: str) -> str:
     """ If human player wins toss, let the human decide the toss. """
 
+    play_start_with_possibilities = ["bat", "field"]
     choice = input("Choose to bat first or field first: ")
     # Ensure that bowling first redirects to fielding first
     if choice == "bowl":
@@ -111,8 +111,9 @@ def human_chooses_toss(team_name):
     return choice
 
 
-def engine_chooses_toss():
+def engine_chooses_toss() -> str:
     """ If human player loses toss, let the engine decide the toss. """
+
     opponent_input = random.randint(0, 1)
     if opponent_input == 0:
         choice = "bat"
@@ -123,7 +124,7 @@ def engine_chooses_toss():
     return choice
 
 
-def reverse_toss(choice):
+def reverse_toss(choice: str) -> str:
     """ Reverse the toss """
 
     if choice == "bat":
