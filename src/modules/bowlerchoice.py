@@ -3,7 +3,7 @@ import random
 # Select the bowlers
 
 
-def fieldChoice(bowlers_array, innings, user_choice_batfield, is_bowler_human):
+def fieldChoice(bowlers_array: list, is_bowler_human: bool) -> str:
     if not is_bowler_human:
         bowler_selected = random.choice(bowlers_array)
     else:
