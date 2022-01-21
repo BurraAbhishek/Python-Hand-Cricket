@@ -21,17 +21,16 @@ from modules.bowlerchoice import fieldChoice
 # is_test : Boolean: Is the game a test match or a limited-over match?
 
 
-def chasingInnings(team_1_array,
-                   team_2_array,
-                   innings,
-                   bat_bowl_choice,
-                   opponent_netscore,
-                   batting_score,
-                   innings_data,
-                   start_message,
+def chasingInnings(team_1_array: list,
+                   team_2_array: list,
+                   innings: int,
+                   bat_bowl_choice: bool,
+                   opponent_netscore: int,
+                   innings_data: dict,
+                   start_message: str,
                    max_overs,
-                   max_wickets,
-                   is_test):
+                   max_wickets: int,
+                   is_test: bool) -> list:
     """ Play the chasing innings: chase down your opponent's total!
 
     In limited-overs cricket, this is always the second innings
@@ -58,6 +57,18 @@ def chasingInnings(team_1_array,
     During runtime, this function modifies the innings data object.
 
     """
+
+    # Enforce type safety for maximum number of overs.
+    if is_test:
+        if not isinstance(max_overs, float):
+            raise TypeError(
+                "The maximum number of overs must be a floating point."
+                )
+    else:
+        if not isinstance(max_overs, int):
+            raise TypeError(
+                "The maximum number of overs must be an integer."
+                )
 
     # Regenerate team details
     T1 = team_1_array[0]
@@ -101,13 +112,9 @@ def chasingInnings(team_1_array,
     # Choose the openers
     player1 = batterChoice(batter_list=batterlist,
                            non_striker=0,
-                           innings=innings,
-                           user_choice_batfield=bat_bowl_choice,
                            is_batter_human=team_2_array[14])
     player2 = batterChoice(batter_list=batterlist,
                            non_striker=player1,
-                           innings=innings,
-                           user_choice_batfield=bat_bowl_choice,
                            is_batter_human=team_2_array[14])
     # Batter statistics
     batter_stats = {
@@ -163,12 +170,9 @@ def chasingInnings(team_1_array,
                 gameIsPlaying = False
             # Innings in progress
             else:
-                over = i
                 print("Over", i)
                 # The fielding side selects the bowler
                 bowler = fieldChoice(bowlerlist,
-                                     innings,
-                                     bat_bowl_choice,
                                      is_bowler_human=team_1_array[14])
                 # A bowler can't bowl for more than 20% of total overs
                 # No bowler is allowed consecutive overs
@@ -246,21 +250,15 @@ def chasingInnings(team_1_array,
                             if bat_bowl_choice == 'field':
                                 batterlist.append('')
                             if player1 == '':
-                                c = bat_bowl_choice
                                 c1 = team_2_array[14]
                                 onstrike = batterChoice(batter_list=batterlist,
                                                         non_striker=player2,
-                                                        innings=innings,
-                                                        user_choice_batfield=c,
                                                         is_batter_human=c1)
                                 player1 = onstrike
                             elif player2 == '':
-                                c = bat_bowl_choice
                                 c1 = team_2_array[14]
                                 onstrike = batterChoice(batter_list=batterlist,
                                                         non_striker=player1,
-                                                        innings=innings,
-                                                        user_choice_batfield=c,
                                                         is_batter_human=c1)
                                 player2 = onstrike
                         # Append the outcome to the over. Wicket counts as 'W'
@@ -345,7 +343,7 @@ def chasingInnings(team_1_array,
                 # Prepare the next over
                 i += 1
                 # Ready for the next over
-                alert_ready_nextover = input()
+                _ = input()
     # Generate the scorecard at the end of the innings.
     scorecard.scoreCard(batters_list=batter_stats,
                         bowlers_list=bowler_stats,
@@ -356,4 +354,4 @@ def chasingInnings(team_1_array,
     innings_data["bowler_stats"] = bowler_stats
     innings_data["score"] = score
     innings_data["wickets_lost"] = wicket
-    return [score, wicket]
+    return [int(score), int(wicket)]
