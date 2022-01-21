@@ -1,13 +1,11 @@
 import random
 
-# Player is bowling
 
-
-def bowl(bowler, is_bowler_human):
+def bowl(is_bowler_human: bool) -> str:
     # Get a number from 0 to 6, from the player.
     if(is_bowler_human):
         print("Bowling: Type your choice in {0, 1, 2, 3, 4, 5, 6}")
-        print("Any other input means free sixer for opponent.")
+        print("Any other input means free six runs for the opponent.")
         user_bowl_attempt = input("Bowl any number from 0 to 6: ")
     else:
         user_bowl_attempt = random.randint(0, 6)
