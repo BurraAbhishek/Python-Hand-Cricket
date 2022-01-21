@@ -1,16 +1,15 @@
 import random
 import string
-import time
 import json
 
 
-def generateFilename(size):
+def generateFilename(size: int) -> str:
     game_data_savename = ''.join([random.choice(string.ascii_uppercase
-        + string.ascii_lowercase + string.digits) for n in range(size)])
+        + string.ascii_lowercase + string.digits) for _ in range(size)])
     return game_data_savename
 
 
-def getUniqueSavefile():
+def getUniqueSavefile() -> str:
     gamefile = generateFilename(16)
     filename = "saved_games/" + gamefile + ".json"
     result = False
@@ -26,14 +25,14 @@ def getUniqueSavefile():
     return result_file
 
 
-def saveGame(data):
+def saveGame(data: dict) -> None:
     filename = getUniqueSavefile()
     savefile = open(filename, 'w')
     json.dump(data, savefile, indent=4)
     savefile.close()
 
 
-def saveGameToID(data, gameid):
+def saveGameToID(data: dict, gameid: str) -> None:
     filename = "saved_games/" + gameid + ".json"
     savefile = open(filename, 'w')
     json.dump(data, savefile, indent=4)
