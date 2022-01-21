@@ -3,12 +3,11 @@ from modules.bowling import bowl
 
 
 def playBall(
-    bowler: str, 
-    batter: str, 
-    is_declare_permitted: bool, 
-    bowler_human: bool, 
-    batter_human: bool
-    ) -> str:
+        bowler: str,
+        batter: str,
+        is_declare_permitted: bool,
+        bowler_human: bool,
+        batter_human: bool) -> str:
 
     print("This is a hand cricket-based cricket match.")
     print("Bowler:", bowler)
