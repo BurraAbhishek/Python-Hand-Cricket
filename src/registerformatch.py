@@ -122,7 +122,7 @@ def findHumanOpponentExists(player: str) -> str:
 
 
 def checkPairingChosen(player: str, opponent: str) -> bool:
-    """ Chooses a match among various pairings 
+    """ Chooses a match among various pairings
 
     Arguments:
     player: str. The name of your team.
