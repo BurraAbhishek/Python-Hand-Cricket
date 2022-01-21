@@ -20,16 +20,15 @@ from modules.bowlerchoice import fieldChoice
 # is_test : Boolean: Is the game a test match or a limited-overs match?
 
 
-def scoringInnings(team_1_array,
-                   team_2_array,
-                   innings,
-                   bat_bowl_choice,
-                   batting_score,
-                   innings_data,
-                   start_message,
+def scoringInnings(team_1_array: list,
+                   team_2_array: list,
+                   innings: int,
+                   bat_bowl_choice: str,
+                   innings_data: dict,
+                   start_message: str,
                    max_overs,
-                   max_wickets,
-                   is_test):
+                   max_wickets: int,
+                   is_test: bool) -> int:
     """ Play the scoring innings
 
     In limited-overs cricket, this is always the first innings
@@ -42,7 +41,7 @@ def scoringInnings(team_1_array,
     batting_score : (int) The team score, usually initialized to zero.
     innings_data : (object) Contains the details of the innings
     start_message : (string) Message displayed before innings start.
-    max_overs : (int) Maximum number of overs available in the innings.
+    max_overs : (int | float) Maximum number of overs available in the innings.
     max_wickets : (int) Maximum number of wickets in the innings.
     is_test : (Boolean) Is this a test match or a limited-over match?
 
@@ -53,6 +52,18 @@ def scoringInnings(team_1_array,
     During runtime, this function modifies the innings data object.
 
     """
+
+    # Enforce type safety for maximum number of overs.
+    if is_test:
+        if not isinstance(max_overs, float):
+            raise TypeError(
+                "The maximum number of overs must be a floating point."
+                )
+    else:
+        if not isinstance(max_overs, int):
+            raise TypeError(
+                "The maximum number of overs must be an integer."
+                )
 
     # Regenerate team details
     T1 = team_1_array[0]
@@ -85,8 +96,6 @@ def scoringInnings(team_1_array,
     innings_data["battingteam"] = T1
     innings_data["bowlingteam"] = T2
     print(start_message)
-    # Initialize team score = 0
-    batting_score = 0
     # Score for each ball faced in each over of the first innings
     ball_score = []
     # Numerical score for each ball faced in an over, first innings
@@ -96,13 +105,9 @@ def scoringInnings(team_1_array,
     # Choose the openers
     player1 = batterChoice(batter_list=batterlist,
                            non_striker=0,
-                           innings=innings,
-                           user_choice_batfield=bat_bowl_choice,
                            is_batter_human=team_1_array[14])
     player2 = batterChoice(batter_list=batterlist,
                            non_striker=player1,
-                           innings=innings,
-                           user_choice_batfield=bat_bowl_choice,
                            is_batter_human=team_1_array[14])
     # Batter statistics
     batter_stats = {
@@ -162,8 +167,6 @@ def scoringInnings(team_1_array,
                 print("Over", i)
                 # The fielding side selects the bowler
                 bowler = fieldChoice(bowlerlist,
-                                     innings,
-                                     bat_bowl_choice,
                                      is_bowler_human=team_2_array[14])
                 # A bowler can't bowl for more than 20% of total overs
                 # No bowler is allowed consecutive overs
@@ -251,8 +254,6 @@ def scoringInnings(team_1_array,
                                 c1 = team_1_array[14]
                                 onstrike = batterChoice(batter_list=batterlist,
                                                         non_striker=player2,
-                                                        innings=innings,
-                                                        user_choice_batfield=c,
                                                         is_batter_human=c1)
                                 player1 = onstrike
                             elif player2 == '':
@@ -260,8 +261,6 @@ def scoringInnings(team_1_array,
                                 c1 = team_1_array[14]
                                 onstrike = batterChoice(batter_list=batterlist,
                                                         non_striker=player1,
-                                                        innings=innings,
-                                                        user_choice_batfield=c,
                                                         is_batter_human=c1)
                                 player2 = onstrike
                         # Append the outcome to the over.
@@ -338,7 +337,7 @@ def scoringInnings(team_1_array,
             # Prepare the next over
             i += 1
             # Ready for the next over
-            alert_ready_nextover = input()
+            _ = input()
     print("End of 1st innings")
     # Generate the scorecard at the end of the innings.
     scorecard.scoreCard(batters_list=batter_stats,
