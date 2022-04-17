@@ -7,28 +7,28 @@
 
 
 def printBatterStats(player: str, batters_list: dict) -> None:
-    if(batters_list[player][1] < 1):
+    if(batters_list[player]["balls"] < 1):
         statstring = str(player) + " did not bat."
     else:
         statstring = (str(player)
                       + " scored "
-                      + str(batters_list[player][0]))
-        if(batters_list[player][0] == 1):
+                      + str(batters_list[player]["runs"]))
+        if(batters_list[player]["runs"] == 1):
             statstring += " run off "
         else:
             statstring += " runs off "
-        statstring += str(batters_list[player][1])
-        if(batters_list[player][1] == 1):
+        statstring += str(batters_list[player]["balls"])
+        if(batters_list[player]["balls"] == 1):
             statstring += " ball, hitting "
         else:
             statstring += " balls, hitting "
-        statstring += str(batters_list[player][2])
-        if(batters_list[player][2] == 1):
+        statstring += str(batters_list[player]["fours"])
+        if(batters_list[player]["fours"] == 1):
             statstring += " four and "
         else:
             statstring += " fours and "
-        statstring += str(batters_list[player][3])
-        if(batters_list[player][3] == 1):
+        statstring += str(batters_list[player]["sixes"])
+        if(batters_list[player]["sixes"] == 1):
             statstring += " six."
         else:
             statstring += " sixes."
@@ -36,16 +36,16 @@ def printBatterStats(player: str, batters_list: dict) -> None:
 
 
 def printBowlerStats(player: str, bowlers_list: dict) -> None:
-    if(bowlers_list[player][0] > 0):
+    if(bowlers_list[player]["overs"] > 0):
         statstring = (str(player)
                       + ": "
-                      + str(bowlers_list[player][0])
+                      + str(bowlers_list[player]["overs"])
                       + " - "
-                      + str(bowlers_list[player][1])
+                      + str(bowlers_list[player]["maidens"])
                       + " - "
-                      + str(bowlers_list[player][2])
+                      + str(bowlers_list[player]["runs"])
                       + " - "
-                      + str(bowlers_list[player][3]))
+                      + str(bowlers_list[player]["wickets"]))
         print(statstring)
 
 
@@ -57,17 +57,17 @@ def scoreCard(batters_list: dict,
     # Batting Statistics
     print("Batting")
     if innings == 1:
-        for i in range(1, 12):
+        for i in range(0, 11):
             printBatterStats(team1_players[i], batters_list)
     else:
-        for i in range(1, 12):
+        for i in range(0, 11):
             printBatterStats(team2_players[i], batters_list)
     # Bowling Statistics
     print("\nBowling")
     if innings == 2:
-        for i in range(1, 12):
+        for i in range(0, 11):
             printBowlerStats(team1_players[i], bowlers_list)
     else:
-        for i in range(1, 12):
+        for i in range(0, 11):
             printBowlerStats(team2_players[i], bowlers_list)
     print('')
