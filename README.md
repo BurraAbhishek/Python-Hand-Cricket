@@ -1,11 +1,13 @@
 # Python-Hand-Cricket
 Play hand cricket as an individual or as a team of 11 against a team of 11 bots for free on the Python Command Line Interface! More information about the gameplay is available in the [documentation](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/docs/Hand%20Cricket%20Python%20App%20Documentation.pdf).
 
+### NOTE: The gameplay charts in the documentation are still relevant, but the instructions no longer work. Instead, directly run main.py for the full gameplay.
+
 ## About this game
 
 This is a hybrid of cricket and the legacy hand cricket game – implemented in Python and played using the command line interface.
 
-This game was built entirely on Python 3.7.4. It is compatible with all releases of Python 3.6 and later.
+This game is compatible with all releases of Python 3.6 and later.
 
 The game can be played even without an internet connection.
 
@@ -19,14 +21,12 @@ This game supports almost all of the laws of cricket which can be implemented in
 NOTE: To play only the traditional hand cricket game, play a limited overs game, and set a large number of overs (For example, 1000 overs) and 1 wicket as the game settings when prompted.
 
 ### Modules:
-The source code is located in the [src](https://github.com/BurraAbhishek/Python-Hand-Cricket/tree/main/src) directory. The source code comprises of the following modules:
+The source code is located in the [src](https://github.com/BurraAbhishek/Python-Hand-Cricket/tree/main/src) directory. The main source code with all the functions uses a class-based approach. The classes can be viewed [here](https://github.com/BurraAbhishek/Python-Hand-Cricket/tree/main/src/clas)
+
+The source code comprises of the following modules:
 - [Team setup](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/setupateam.py): Setup your team and it's members. Team members need not be unique, since only one person may actually be an entire team, i.e., the person wants to play as an individual. In that case, the person's name can be the name of each team member.
 - [Match registration](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/registerformatch.py): Register a match between your team and another team. To play against the computer, simply skip the play human option.
-- [Limited-overs game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgame.py): The limited-overs cricket module. 
-- [Test cricket](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgametestcricket.py): The test cricket module. 
-#### Submodules:
-- [src/innings/scoring.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/scoring.py): The innings in which teams try to score big. In limited-overs cricket, this is always the first innings. In test cricket, this is the non-chasing innings.
-- [src/innings/chasing.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/innings/chasing.py): The innings in which teams chase the opposition's total.
+- [The game](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/handcricketgame.py): This module can handle both limited-overs and test cricket.
 - [src/modules/batterchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/batterchoice.py): From a given list of players, select the player who will bat now.
 - [src/modules/batting.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/batting.py): Module which contains the code for batting.
 - [src/modules/bowlerchoice.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/bowlerchoice.py): From a given list of players, select the bowler.
@@ -40,7 +40,7 @@ The source code is located in the [src](https://github.com/BurraAbhishek/Python-
 - [src/modules/followon.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/followon.py): Only works for test cricket. Determine whether the team which batted first can enforce the follow-on or not. This code runs only if the team batting first leads by a certain threshold.
 - [src/modules/savegamedata.py](https://github.com/BurraAbhishek/Python-Hand-Cricket/blob/main/src/modules/savegamedata.py): Saves the completed game into a JSON file.
 
-Some folders (directories) have a README.md file. Please read them carefully as they describe the contents of that directory
+Some folders (directories) have a README.md file. Please read them carefully as they describe the contents of that directory.
 
 ## Getting Started:
 ### Rules of the game:
