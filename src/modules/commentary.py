@@ -37,17 +37,22 @@ stumped_commentary = [
     ]
 
 
-def outCall() -> str:
+def outCall() -> tuple:
     x = random.randint(0, 5)
+    m = ''
     if x == 0 or x == 1:
+        m = 'bowled'
         y = random.choice(bowled_commentary)
     elif x == 2 or x == 3:
+        m = 'caught'
         y = random.choice(caught_commentary)
     elif x == 4:
+        m = 'lbw'
         y = random.choice(lbw_commentary)
     elif x == 5:
+        m = 'stumped'
         y = random.choice(stumped_commentary)
-    return y
+    return m, y
 
 # Runs
 
@@ -102,20 +107,25 @@ commentary_0runs = [
     ", NO RUN. The batters wanted to run, but the fielders were too quick.",
 ]
 
-def scoreRun(score: str, bowler: str, batter: str) -> None:
+
+def scoreRun(score: str, bowler: str, batter: str) -> tuple:
+    m = score
     if score == '6':
-        print(bowler, "to", batter, shout(random.choice(commentary_6runs)))
+        c = bowler + " to " + batter + shout(random.choice(commentary_6runs))
     elif score == '5':
-        print(bowler, "to", batter, shout(random.choice(commentary_5runs)))
+        c = bowler + " to " + batter + shout(random.choice(commentary_5runs))
     elif score == '4':
-        print(bowler, "to", batter, shout(random.choice(commentary_4runs)))
+        c = bowler + " to " + batter + shout(random.choice(commentary_4runs))
     elif score == '3':
-        print(bowler, "to", batter, shout(random.choice(commentary_3runs)))
+        c = bowler + " to " + batter + shout(random.choice(commentary_3runs))
     elif score == '2':
-        print(bowler, "to", batter, shout(random.choice(commentary_2runs)))
+        c = bowler + " to " + batter + shout(random.choice(commentary_2runs))
     elif score == '1':
-        print(bowler, "to", batter, shout(random.choice(commentary_1runs)))
+        c = bowler + " to " + batter + shout(random.choice(commentary_1runs))
     elif score == '0':
-        print(bowler, "to", batter, shout(random.choice(commentary_0runs)))
+        c = bowler + " to " + batter + shout(random.choice(commentary_0runs))
     elif score == 'W':
-        print(bowler, "to", batter, ", OUT", shout(outCall()))
+        m, y = outCall()
+        c = bowler + " to " + batter + ", OUT, " + shout(y)
+    print(c)
+    return m, c
