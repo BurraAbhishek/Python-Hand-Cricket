@@ -146,6 +146,9 @@ class Team:
             while(condition1 or condition2):
                 team_member_input_message = "Player ID " + str(i) + ": "
                 team_member = input(team_member_input_message)
+                team_member_clean = team_member.strip().lower()
+                condition1 = bool(len(team_member_clean) < 1)
+                condition2 = bool(team_member_clean in self.__blacklist)
             # Save the team member
             self.members.append(team_member)
 
