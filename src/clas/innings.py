@@ -1,3 +1,4 @@
+import random
 from math import ceil
 from clas.team import Team
 from modules import scorecard
@@ -170,14 +171,15 @@ class Innings:
             "dismissal": "Not out"
         }
 
-    def record_outcome(self, outcome: str) -> dict:
+    def record_outcome(self, outcome: str, comment: str) -> dict:
         return {
             "bowler": self.bowler,
             "batter": self.firstbatter,
             "nonstriker": self.secondbatter,
             "over": self.over + 1,
             "ball": self.ball + 1,
-            "result": outcome
+            "result": outcome,
+            "commentary": comment
         }
 
     def new_bowler_stats(self) -> dict:
@@ -219,18 +221,26 @@ class Innings:
     def play_ball(self):
         print("Ball", self.ball + 1)
         if self.chasing:
+            required_runs = self.target - self.data["score"]
             balls_left = (6 * (self.max_overs - self.over)) - self.ball
-            target_required_string = (
-                "Need "
-                + str(self.target - self.data["score"])
-                + " runs to win"
-            )
+            if (required_runs == 1):
+                target_required_string = (
+                    "Need 1 run to win"
+                )
+            else:
+                target_required_string = (
+                    "Need "
+                    + str(required_runs)
+                    + " runs to win"
+                )
             if not self.test:
                 target_required_string += (
                     " off "
                     + str(balls_left)
-                    + " balls"
+                    + " ball"
                 )
+                if (balls_left != 1):
+                    target_required_string += "s"
             print(target_required_string)
         # outcome: 0, 1, 2, 3, 4, 5, 6, W, Declared
         outcome = playBall(
@@ -243,21 +253,21 @@ class Innings:
         if outcome == "Declared":
             self.completed = True
         else:
-            scoreRun(outcome, self.bowler, self.firstbatter)
+            result, comment = scoreRun(outcome, self.bowler, self.firstbatter)
             self.over_outcomes.append(outcome)
             if outcome == "W":
-                self.wicket()
+                self.wicket(result)
             else:
                 run = int(outcome)
                 self.score_run(run)
             self.data["data"].append(
-                self.record_outcome(outcome)
+                self.record_outcome(outcome, comment)
             )
             self.check_overs()
             if self.chasing:
                 self.check_chased()
 
-    def wicket(self):
+    def wicket(self, method: str):
         self.data["bowler_stats"][self.bowler]["overs"] = (
             self.record_increment_ball(
                 self.data["bowler_stats"][self.bowler]["overs"]
@@ -266,6 +276,36 @@ class Innings:
         self.data["batter_stats"][self.firstbatter]["balls"] += 1
         self.data["batter_stats"][self.firstbatter]["dismissed"] = True
         self.data["bowler_stats"][self.bowler]["wickets"] += 1
+        # Dismissal method
+        if method == 'bowled':
+            self.data["batter_stats"][self.firstbatter]["dismissal"] = (
+                "b " + str(self.bowler)
+            )
+        elif method == 'lbw':
+            self.data["batter_stats"][self.firstbatter]["dismissal"] = (
+                "lbw b " + str(self.bowler)
+            )
+        elif method == 'stumped':
+            wicketkeeper = random.choice(self.bowling_team.members)
+            while (wicketkeeper == self.bowler):
+                wicketkeeper = random.choice(self.bowling_team.members)
+            self.data["batter_stats"][self.firstbatter]["dismissal"] = (
+                "st " + wicketkeeper + " b " + str(self.bowler)
+            )
+        elif method == 'caught':
+            fielder = random.choice(self.bowling_team.members)
+            if (fielder == self.bowler):
+                self.data["batter_stats"][self.firstbatter]["dismissal"] = (
+                    "c & b " + str(self.bowler)
+                )
+            else:
+                self.data["batter_stats"][self.firstbatter]["dismissal"] = (
+                    "c " + fielder + " b " + str(self.bowler)
+                )
+        else:
+            self.data["batter_stats"][self.firstbatter]["dismissal"] = (
+                "b " + str(self.bowler)
+            )
         self.over_score.append(0)
         self.data["wickets_lost"] += 1
         self.check_wickets()
