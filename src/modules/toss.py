@@ -1,16 +1,17 @@
 import random
+from clas.team import Team
 # Toss: The AI has a number in its mind. You select any number from 0 to 6.
 # You also select whether the sum of these two numbers is odd or even.
 # If your prediction is correct, you win the toss.
 # Otherwise, you lose the toss.
 
 
-def tossPlay(team1_data: dict, team2_data: dict) -> str:
+def tossPlay(team1_data: Team, team2_data: Team) -> str:
     """ Toss for cricket matches, using the odd-or-even concept
 
     Arguments:
-    team1_data: JSON representation of the team file of the first team
-    team2_data: JSON representation of the team file of the second team
+    team1_data: Team object corresponding to the first team
+    team2_data: Team object corresponding to the second team
 
     Returns:
     A string, either "bat" or "field"
@@ -30,8 +31,8 @@ def tossPlay(team1_data: dict, team2_data: dict) -> str:
     # NOTE: We will not enforce the 0 to 6 constraint.
     # Generally, people play in that range.
     # if team2 is not human, assign to team1
-    if team1_data["isHuman"] and team2_data["isHuman"]:
-        print("Team", team2_data["team_name"], ", it's your turn. ")
+    if team1_data.is_human and team2_data.is_human:
+        print("Team", team2_data.name, ", it's your turn. ")
     try:
         numInput = int(input("Choose a number between 0 and 6 (in [0, 6]): "))
     except:
@@ -39,8 +40,8 @@ def tossPlay(team1_data: dict, team2_data: dict) -> str:
     # Now decide whether the sum is Odd or Even.
     # If something else is typed, the player loses the toss.
     # If team1 is not human, assign to team2
-    if team1_data["isHuman"] and team2_data["isHuman"]:
-        print("Team", team1_data["team_name"], ", it's your turn. ")
+    if team1_data.is_human and team2_data.is_human:
+        print("Team", team1_data.name, ", it's your turn. ")
     print("Odd or Even? NOTE: Zero is counted as even. ")
     print("The sum of the second team's input and AI input is checked. ")
     print("The AI input is either 0 or 1. ")
@@ -53,42 +54,42 @@ def tossPlay(team1_data: dict, team2_data: dict) -> str:
     # The sum is actually even
     if c % 2 == 0:
         if turn == 'Even':
-            if not team2_data["isHuman"]:
+            if not team2_data.is_human:
                 print("You won the toss")
             else:
-                print(team1_data["team_name"], "won the toss")
+                print(team1_data.name, "won the toss")
             toss = 1
         else:
-            if not team2_data["isHuman"]:
+            if not team2_data.is_human:
                 print("You lost the toss")
             else:
-                print(team2_data["team_name"], "won the toss")
+                print(team2_data.name, "won the toss")
             toss = 0
     # The sum is actually odd
     else:
         if turn == 'Odd':
-            if not team2_data["isHuman"]:
+            if not team2_data.is_human:
                 print("You won the toss")
             else:
-                print(team1_data["team_name"], "won the toss")
+                print(team1_data.name, "won the toss")
             toss = 1
         else:
-            if not team2_data["isHuman"]:
+            if not team2_data.is_human:
                 print("You lost the toss")
             else:
-                print(team2_data["team_name"], "won the toss")
+                print(team2_data.name, "won the toss")
             toss = 0
 
     # team1 wins the toss
     if toss == 1:
-        if team1_data["isHuman"]:
-            choice = human_chooses_toss(team1_data["team_name"])
+        if team1_data.is_human:
+            choice = human_chooses_toss(team1_data.name)
         else:
             choice = engine_chooses_toss()
     # team2 loses the toss
     elif toss == 0:
-        if team2_data["isHuman"]:
-            choice = reverse_toss(human_chooses_toss(team2_data["team_name"]))
+        if team2_data.is_human:
+            choice = reverse_toss(human_chooses_toss(team2_data.name))
         else:
             choice = engine_chooses_toss()
 
