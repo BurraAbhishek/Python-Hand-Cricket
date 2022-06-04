@@ -263,6 +263,7 @@ class Innings:
             self.data["data"].append(
                 self.record_outcome(outcome, comment)
             )
+            self.next_ball()
             self.check_overs()
             if self.chasing:
                 self.check_chased()
@@ -315,7 +316,6 @@ class Innings:
                 non_striker=self.secondbatter,
                 is_batter_human=self.batting_team.is_human
             )
-        self.next_ball()
 
     def score_run(self, run: int) -> None:
         self.over_score.append(run)
@@ -334,7 +334,6 @@ class Innings:
                 self.data["bowler_stats"][self.bowler]["overs"]
             )
         )
-        self.next_ball()
 
     def rotate_strike(self):
         swapping = self.firstbatter
